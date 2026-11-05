@@ -1,0 +1,83 @@
+<h2 id="s6"><span class="num">06</span>横向评分与决策</h2>
+
+<p class="lead">五个方向用同一把尺子量。分数本身不重要，重要的是<b>分数的形状</b>——每一项失分在哪，决定了你会怎么死。</p>
+
+<div class="bars">
+  <div class="bar"><div class="name">5.3 CSV / Excel</div><div class="track"><div class="fill g" style="width:77.5%"></div></div><div class="val">7.75</div></div>
+  <div class="bar"><div class="name">5.1 API 数据转换</div><div class="track"><div class="fill" style="width:73.5%"></div></div><div class="val">7.35</div></div>
+  <div class="bar"><div class="name">5.5 小企业自动化</div><div class="track"><div class="fill" style="width:73.0%"></div></div><div class="val">7.30</div></div>
+  <div class="bar"><div class="name">5.2 AI Agent 监控</div><div class="track"><div class="fill o" style="width:59.5%"></div></div><div class="val">5.95</div></div>
+  <div class="bar"><div class="name">5.4 AI 代码测试</div><div class="track"><div class="fill o" style="width:54.5%"></div></div><div class="val">5.45</div></div>
+</div>
+
+<div class="tw">
+<table class="compact score">
+<thead><tr><th>维度</th><th class="n">权重</th><th class="n">CSV/Excel</th><th class="n">API</th><th class="n">SMB</th><th class="n">Agent</th><th class="n">Code</th></tr></thead>
+<tbody>
+<tr><td>需求强度</td><td class="n">20%</td><td class="n">9</td><td class="n">7</td><td class="n">8</td><td class="n">8</td><td class="n">6</td></tr>
+<tr><td>供给缺口</td><td class="n">25%</td><td class="n">7</td><td class="n">7</td><td class="n">9</td><td class="n">4</td><td class="n">5</td></tr>
+<tr><td>付费意愿</td><td class="n">20%</td><td class="n">7</td><td class="n">7</td><td class="n">6</td><td class="n">7</td><td class="n">8</td></tr>
+<tr><td>单人可交付</td><td class="n">20%</td><td class="n">8</td><td class="n">8</td><td class="n">6</td><td class="n">6</td><td class="n">4</td></tr>
+<tr><td>$100 冷启动</td><td class="n">15%</td><td class="n">8</td><td class="n">8</td><td class="n">7</td><td class="n">5</td><td class="n">4</td></tr>
+<tr style="background:#f7f9fc"><td><b>加权总分</b></td><td class="n">100%</td><td class="n"><b>7.75</b></td><td class="n"><b>7.35</b></td><td class="n"><b>7.30</b></td><td class="n"><b>5.95</b></td><td class="n"><b>5.45</b></td></tr>
+</tbody>
+<caption>评分为判断值（0–10），依据见各节的证据；换一个评分者，名次可能变化 1–2 位，但“Agent 与 Code 明显靠后”这个结论是稳的。</caption>
+</table>
+</div>
+
+<h3>每一项失分在哪里</h3>
+
+<div class="tw">
+<table class="compact">
+<thead><tr><th>方向</th><th>最强的一项</th><th>最弱的一项</th><th>你会怎么死</th></tr></thead>
+<tbody>
+<tr><td><b>CSV / Excel</b></td><td>需求（9）—— 月搜 4 万的头部词、KD&lt;10 的长尾</td><td>缺口（7）—— 大厂随时可以内置</td><td>做完发现 Google Sheets 自己加了个“清理建议”</td></tr>
+<tr><td><b>API 数据转换</b></td><td>可交付（8）+ 冷启动（8）—— 长尾词意图极强</td><td>需求（7）——“转换”本身是 commoditized 的</td><td>用户只用免费工具，不买定时</td></tr>
+<tr><td><b>SMB 自动化</b></td><td>缺口（9）—— 官方文档明文的盲区</td><td>付费意愿（6）—— 买家是最抠的一群人</td><td>获客成本高于客单价，做成了外包公司</td></tr>
+<tr><td><b>Agent 监控</b></td><td>需求（8）—— 资本与开发者都在看</td><td>缺口（4）—— 开源免费 + 8 家被收购</td><td>和 MIT 协议的 3.7 万星项目比价</td></tr>
+<tr><td><b>代码测试</b></td><td>付费意愿（8）—— 企业预算充足</td><td>可交付（4）+ 冷启动（4）—— 要算力、要信任</td><td>算力账单 &gt; 收入；或客户不信你的测试</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>敏感性分析：换一个前提，结论会变吗</h3>
+
+<div class="tw">
+<table class="compact">
+<thead><tr><th>如果你的情况是…</th><th>排序会变成</th><th>为什么</th></tr></thead>
+<tbody>
+<tr><td><b>预算 $10,000 而不是 $100</b></td><td>CSV ≈ API &gt; SMB &gt; Agent &gt; Code</td><td>钱能买流量，但买不到“缺口”；Agent 的缺口分仍是 4，Code 的算力仍要烧</td></tr>
+<tr><td><b>你已有技术受众（HN/X 有 5k 粉）</b></td><td>API &gt; Agent &gt; CSV</td><td>API 与 Agent 的冷启动分从 5–8 提到 9，因为你的分发就是你自己</td></tr>
+<tr><td><b>你要 12 个月内 $10k MRR</b></td><td>SMB &gt; CSV &gt; API</td><td>只有 SMB 能靠“安装费 + 托管费”快速把客单价拉到 $300+</td></tr>
+<tr><td><b>你完全不想做客服</b></td><td>CSV &gt; API &gt;&gt; SMB</td><td>SMB 的每 10 个客户会给你 3 张“能不能帮我改一下”的工单</td></tr>
+<tr><td><b>你已经有 APIFlow 这个产品</b></td><td>API &gt; CSV &gt; SMB</td><td>不是分数变了，是“启动成本”变了——你已经有转换引擎</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>决策：不要把 7.75 和 7.35 当成两个选项</h3>
+
+<p>CSV/Excel（7.75）和 API 转换（7.35）差了 0.4 分，在判断误差范围内。而它们<b>恰好是同一个产品的两端</b>：</p>
+
+<div class="box accent">
+<h5>一个产品，两个入口</h5>
+<p><b>免费的入口（获客）：</b>浏览器里的 CSV/Excel 清洗工具。不上传、可回滚、每格可 diff。吃 <code>clean csv online</code>、<code>fix csv encoding</code>、<code>dedupe csv</code> 这些 KD&lt;20 的长尾词。<b>对应 5.3。</b></p>
+<p><b>付费的核心（变现）：</b>把清洗规则存下来，每天自动跑，输入可以是 CSV 上传，也可以是任意 API/JSON 地址，输出到 Google Sheets。带校验规则、行数异常告警、审计日志。<b>对应 5.1 + 5.5 的断链监控。</b></p>
+<p>这个组合一次性吃掉了本报告排名第 1、2、3、4 的四个缺口，而它们本来就是同一件事的四个侧面：<b>数据从脏到干净、从一次性到持续、从看不见到可审计。</b></p>
+</div>
+
+<div class="box good">
+<h5>为什么这个组合对你特别合适</h5>
+<ul>
+<li><b>复用你已有的资产。</b>你的仓库叫 <code>Developer-Data-Transformer</code>，README 写的是“专门解决 API 数据结构不兼容的问题”。转换引擎就是付费端的核心，不需要从零开始。</li>
+<li><b>获客和变现分开。</b>免费工具走 SEO（慢但免费），付费管道走社区和外联（快但费力）。两条腿走路，不押注单一渠道。</li>
+<li><b>成本结构极轻。</b>浏览器内 WASM 做清洗（0 服务器成本），Cloudflare Workers 做定时（免费额度 10 万请求/天），D1 存元数据（免费 5GB）。</li>
+<li><b>定价有锚，不需要发明新计价。</b>$19 / $49 / $99 三档，对标 Rows $8、Numerous $10、Coefficient $49、Zapier $19.99。</li>
+</ul>
+</div>
+
+<div class="box warn">
+<h5>一个诚实的提醒</h5>
+<p>这个组合最大的风险不是技术，是<b>“免费工具的用户不会付费”</b>。清洗工具的用户画像和使用管道的人画像并不完全重合：前者是“偶尔遇到脏文件的人”，后者是“每周都要交报表的人”。</p>
+<p><b>所以免费工具不能只是引流，必须做“付费触发点”</b>：当用户第 3 次上传同类文件、或文件超过 5MB、或想要“保存这套规则下次直接用”的时候，弹出付费墙。<b>这个触发点的设计，比工具体验更决定收入。</b></p>
+</div>

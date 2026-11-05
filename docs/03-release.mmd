@@ -1,0 +1,20 @@
+flowchart LR
+  subgraph DEV["本地"]
+    A["pnpm dev"] --> B["git push"]
+  end
+  subgraph CI["Cloudflare Pages"]
+    C["预览构建<br/><small>每个 PR 一个 URL</small>"] --> D["冒烟检查"]
+  end
+  subgraph PROD["生产"]
+    E["合并 main → Pages"] --> F["wrangler deploy<br/>Worker"]
+    F --> G["D1 迁移<br/><small>幂等 · 先备份</small>"]
+    G --> H["Cron 生效"]
+  end
+  subgraph OPS["运维"]
+    I["监控 / 自检"] --> J["回滚<br/><small>Pages 回退 / wrangler rollback</small>"]
+    K["交付客户<br/><small>托管表 + CSV + 告警</small>"]
+  end
+  B --> C
+  D --> E
+  H --> I
+  I -->|健康| K

@@ -1,0 +1,160 @@
+<h3 id="s5-1">5.1 API 数据转换平台</h3>
+
+<div class="box flat">
+<h5>一句话结论</h5>
+<p><b>这是五个方向里“价格真空”最明显的一个</b>：入门级 $9–20/月很拥挤，企业级 $1.2 万/年起很成熟，但中间那层——“我只想每天拿一张干净的表，别让我建数仓”——几乎没人认真做。这正好是一个人的射程。</p>
+</div>
+
+<h4>竞品地图</h4>
+
+<div class="tw">
+<table class="compact">
+<thead><tr><th>产品</th><th>定位</th><th>免费层</th><th class="n">入门价</th><th>计量</th><th>目标客户</th></tr></thead>
+<tbody>
+<tr><td>Zapier</td><td>9000+ 应用的无代码自动化</td><td>100 tasks/月、2 步、无 webhook</td><td class="n">$19.99/月</td><td>task（成功 action）</td><td>SMB 业务团队</td></tr>
+<tr><td>Make</td><td>可视化场景编排</td><td>1,000 credits、2 scenario</td><td class="n">$9/月</td><td>module 执行 → credit</td><td>运营/SMB</td></tr>
+<tr><td>n8n</td><td>可自托管的工作流</td><td>自托管免费</td><td class="n">€20/月</td><td>workflow 执行</td><td>技术团队</td></tr>
+<tr><td>Pipedream</td><td>开发者向的事件驱动</td><td>有</td><td class="n">按 credit</td><td>credit</td><td>开发者</td></tr>
+<tr><td>Retool Workflows</td><td>内部工具 + 定时任务</td><td>有</td><td class="n">按席位</td><td>seat + 运行</td><td>内部工具团队</td></tr>
+<tr><td>Airbyte</td><td>开源 ELT + 云托管</td><td>自托管免费</td><td class="n">$20/月</td><td>credit（≈1GB）</td><td>中小数据团队</td></tr>
+<tr><td>Fivetran</td><td>托管 ELT 标杆</td><td>500k MAR</td><td class="n">年合约 $12,000 起</td><td>monthly active rows</td><td>中大型数据团队</td></tr>
+<tr><td>Estuary / Meltano / dbt</td><td>流式 CDC / Singer / SQL 转换</td><td>开源</td><td class="n">报价/按席位</td><td>GB / 项目 / seat</td><td>数据工程</td></tr>
+<tr><td>Workato / Boomi / MuleSoft / Celigo</td><td>企业 iPaaS</td><td>无</td><td class="n">报价制</td><td>task / 连接 / 消息</td><td>中大企业</td></tr>
+<tr><td>Parabola</td><td>非技术运营的表格化数据流</td><td>1 用户、1,000 credits</td><td class="n">已转报价制</td><td>credit</td><td>运营/财务</td></tr>
+<tr><td>Firecrawl</td><td>网页 → 结构化数据</td><td>500 搜索 / 1,000 页</td><td class="n">$16/月</td><td>credit</td><td>开发者/AI 团队</td></tr>
+<tr><td>Flatfile / OneSchema</td><td>面向终端用户的文件导入</td><td>有</td><td class="n">按导入量</td><td>row/import</td><td>SaaS 产品团队</td></tr>
+</tbody>
+<caption>价格查于 2026-11；Zapier/Make 数字为 2026-10 第三方汇总核对，其余读自官网。</caption>
+</table>
+</div>
+
+<p>这张表最重要的信息不在“谁便宜”，而在<b>价格的断层</b>。把年化价格排一下：</p>
+
+<div class="bars">
+  <div class="bar"><div class="name">Make Core</div><div class="track"><div class="fill" style="width:1%"></div></div><div class="val">$108<small>/年</small></div></div>
+  <div class="bar"><div class="name">Firecrawl Hobby</div><div class="track"><div class="fill" style="width:1.5%"></div></div><div class="val">$192<small>/年</small></div></div>
+  <div class="bar"><div class="name">n8n Starter</div><div class="track"><div class="fill" style="width:2%"></div></div><div class="val">€240<small>/年</small></div></div>
+  <div class="bar"><div class="name">Zapier Pro</div><div class="track"><div class="fill" style="width:2%"></div></div><div class="val">$240<small>/年</small></div></div>
+  <div class="bar"><div class="name">Airbyte Plus</div><div class="track"><div class="fill" style="width:19%"></div></div><div class="val">$2,268<small>/年</small></div></div>
+  <div class="bar"><div class="name" style="color:var(--bad);font-weight:700">← 这里有一整层空白 →</div><div class="track"><div class="fill o" style="width:49%"></div></div><div class="val">$2.3k–12k</div></div>
+  <div class="bar"><div class="name">Fivetran 起约</div><div class="track"><div class="fill" style="width:100%;background:linear-gradient(90deg,#dc2626,#991b1b)"></div></div><div class="val">$12,000<small>/年</small></div></div>
+</div>
+
+<p>$240/年 到 $2,268/年 之间有 10 倍的空档，$2,268 到 $12,000 之间还有 5 倍。落在这两层之间的客户是谁？是那种“每天要 3 张表、总共 20 万行、不想建 warehouse、也不想学 Airbyte 的 connector 配置”的人。他们现在的选择是：<b>用 Zapier 硬凑（然后被 task 计费咬死），或者让实习生每周手动导出</b>。</p>
+
+<h4>用户差评：三个反复出现的模式</h4>
+
+<h5>模式一：按量计费不可预测，账单会爆</h5>
+<blockquote>
+“the 'active row' based pricing is <b>unpredictable and can have huge spikes in billing costs</b>.”
+<em>—— HN 评 Fivetran。<a href="https://news.ycombinator.com/item?id=32396375">来源</a></em>
+</blockquote>
+<blockquote>
+“pricing models make it <b>impossible to reasonably predict costs</b> for my use-case.”
+<em>—— HN。<a href="https://news.ycombinator.com/item?id=33371254">来源</a></em>
+</blockquote>
+
+<h5>模式二：schema 一变就静默失败，一周后才发现</h5>
+<blockquote>
+“streams with changes <b>silently fail</b> … we did not receive any emails … downstream users were <b>missing data for almost a week</b>.”
+<em>—— Airbyte GitHub Issue #78427（2026-05）。<a href="https://github.com/airbytehq/airbyte/issues/78427">来源</a></em>
+</blockquote>
+<blockquote>
+“The only special thing that happened to this stream … was a schema change … I experienced <b>a data loss</b>.”
+<em>—— Airbyte #77627（2026-04）。<a href="https://github.com/airbytehq/airbyte/issues/77627">来源</a></em>
+</blockquote>
+
+<h5>模式三：字段映射是纸糊的，改个顺序就断</h5>
+<blockquote>
+“If you reorder a step … you'll see an alert asking you to <b>update mapped fields</b>.”
+<em>—— Zapier 官方帮助文档，等于承认“调步骤顺序 = 断映射”。<a href="https://help.zapier.com/hc/en-us/articles/8496181445261">来源</a></em>
+</blockquote>
+<blockquote>
+“Tools like Zapier and Make … <b>weren't built for developers</b> … the execution model was 'hope the server stays up.'”
+<em>—— HN，2026。<a href="https://news.ycombinator.com/item?id=47847941">来源</a></em>
+</blockquote>
+
+<div class="tw">
+<table class="compact">
+<thead><tr><th>痛点</th><th>出现</th><th>用户真正在说什么</th><th>产品化机会</th></tr></thead>
+<tbody>
+<tr><td>计费不可预测</td><td class="n">4/10</td><td>“我不敢用，因为不知道月底多少钱”</td><td class="c"><span class="b g">按表/按刷新次数定价</span></td></tr>
+<tr><td>schema 变更导致崩溃</td><td class="n">3/10</td><td>“上游加了一列，我的管道就废了”</td><td class="c"><span class="b g">变更评审 + 自动适配</span></td></tr>
+<tr><td>静默失败</td><td class="n">1/10</td><td>“坏了没人告诉我”</td><td class="c"><span class="b g">业务方告警</span></td></tr>
+<tr><td>调试困难</td><td class="n">1/10</td><td>“报错看不懂”</td><td class="c"><span class="b g">人话错误</span></td></tr>
+<tr><td>供应商锁定</td><td class="n">1/10</td><td>“五年后这套还活着吗”</td><td class="c"><span class="b k">难差异</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="box accent">
+<h5>这三条差评合起来，正好是一个产品定义</h5>
+<p>把三条抱怨翻译成需求：<b>「可预测的价格」+「schema 变了不炸」+「坏了我知道」</b>。这不是“更好的 Zapier”，这是一个更窄的东西：<b>一条不需要维护的、从 API 到表格的输送带</b>。它不需要 9000 个集成，只需要 5 个源（Stripe、Shopify、HubSpot、Airtable、任意 REST/JSON）和 2 个目标（Google Sheets、CSV/Excel 下载）。</p>
+</div>
+
+<h4>需求与收入证据</h4>
+
+<div class="tw">
+<table class="compact">
+<thead><tr><th>信号</th><th>数据</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>n8n 估值</td><td><b>$25 亿</b>（2025-10，Accel/Nvidia 参投）</td><td>“开源工作流”被资本市场认可</td></tr>
+<tr><td>Fivetran 估值</td><td>$56 亿（2022-08）</td><td>数据搬运是验证过的付费品类</td></tr>
+<tr><td>“脏活”的真实体量</td><td>npm 月下载：<code>csv-parse</code> <b>8,400 万</b>、<code>papaparse</code> <b>7,060 万</b>、<code>xlsx</code> <b>4,900 万</b>、<code>json-2-csv</code> <b>640 万</b></td><td>开发者每个月手工做几千万次“格式转换”——这是需求的下限，不是上限</td></tr>
+<tr><td>付费意愿锚点</td><td>Zapier $19.99、Make $9、Airbyte $20、Firecrawl $16</td><td>$9–20 是心理舒适区；$29 需要“省一个工时”的理由</td></tr>
+</tbody>
+<caption>npm 数据来自 api.npmjs.org（last-month，2026-10-05 至 2026-11-03，本次实测）；估值来自 Bloomberg / Forbes 报道。</caption>
+</table>
+</div>
+
+<h4>SEO 关键词（26 个，量为区间估计）</h4>
+
+<div class="tw">
+<table class="compact">
+<thead><tr><th>关键词</th><th class="n">量级</th><th>意图</th><th>难度</th><th>判断</th></tr></thead>
+<tbody>
+<tr><td>api to google sheets</td><td class="n">2,400</td><td>交易</td><td class="c">中</td><td>有强需求，需差异化落地页</td></tr>
+<tr><td>zapier alternative cheaper</td><td class="n">1,900</td><td>商业</td><td class="c dn">高</td><td>大厂投放密集，别正面打</td></tr>
+<tr><td>webhook to google sheets</td><td class="n">1,300</td><td>交易</td><td class="c">中</td><td><span class="b g">可打</span>，转化路径短</td></tr>
+<tr><td>nested json to csv</td><td class="n">900</td><td>信息</td><td class="c">低</td><td><span class="b g">工具页引流</span></td></tr>
+<tr><td>rest api to csv</td><td class="n">500</td><td>交易</td><td class="c">低</td><td><span class="b g">最优</span></td></tr>
+<tr><td>json to csv converter api</td><td class="n">400</td><td>交易</td><td class="c">低</td><td><span class="b g">最优</span></td></tr>
+<tr><td>api response to excel</td><td class="n">250</td><td>交易</td><td class="c">低</td><td><span class="b g">最优</span></td></tr>
+<tr><td>scheduled api to csv export</td><td class="n">70</td><td>交易</td><td class="c">低</td><td><span class="b g">金句词</span> 意图=付费</td></tr>
+<tr><td>transform api response to table</td><td class="n">90</td><td>交易</td><td class="c">低</td><td><span class="b g">金句词</span></td></tr>
+<tr><td>json schema change breaking pipeline</td><td class="n">50</td><td>信息</td><td class="c">低</td><td><span class="b g">内容钩子</span> 直接对应痛点</td></tr>
+</tbody>
+<caption>完整 26 词见附录 A；搜索量为区间估计（无 Ahrefs 权限），用于相对比较。</caption>
+</table>
+</div>
+
+<p>这批词的结构非常健康：<b>头部词（2,400）被 Zapier 的插件页占着，但长尾词（50–500）的 SERP 里全是论坛帖、Stack Overflow、和十年没更新的工具站</b>。这意味着“用 20 篇工具页 + 5 篇对比页”就能吃到一部分意图明确的流量——这是 0 预算能做的事。</p>
+
+<h4>缺口判断</h4>
+
+<p>三个缺口，按可产品化程度排序：</p>
+
+<ol>
+<li><b>schema 变更的“人话级”评审与自动修复</b>（G1）。现在的产品把 JSON diff 丢给工程师，非技术用户看不懂“这列删了要不要紧”。一个能做“上游加了 <code>customer.name</code> 字段，会自动映射到你的 Name 列；<code>amount</code> 从整数变成字符串，已自动转换并记录”的工具，价值非常直观。</li>
+<li><b>$240–$2,268/年 的价格真空</b>（G2）。定 $19–49/月，按“表数 + 刷新频率”计价，而不是按行数/任务数——这直接回应了“计费不可预测”的第一大痛点。</li>
+<li><b>面向业务方的错误可观测性</b>（G3）。“昨天 03:00 的同步失败了，因为 Stripe 返回 429；已自动重试成功，数据完整” —— 这句话本身就是一个功能。</li>
+</ol>
+
+<div class="box good">
+<h5>为什么这个方向最适合“已有 APIFlow 雏形”的你</h5>
+<ul>
+<li><b>资产复用</b>：你已经在做“API 数据结构不兼容”的问题，这个方向的 1.0 就是它的窄化版，不需要换赛道。</li>
+<li><b>成本结构</b>：一次同步 = 一次 HTTP 请求 + 一次转换，边际成本几乎为零。$100 预算足够支撑前 100 个用户（Cloudflare Workers 免费额度 10 万请求/天）。</li>
+<li><b>分发可做</b>：长尾词竞争低、意图明确；免费工具页（JSON→CSV、嵌套展开、字段映射预览）天然是获客入口。</li>
+<li><b>定价可守</b>：按“表”收费避开了 task/row 的价格战，客户也更容易预测账单。</li>
+</ul>
+</div>
+
+<div class="box warn">
+<h5>必须提前想清楚的三件事</h5>
+<ul>
+<li><b>Zapier Tables + AI 字段是最短路径的替代品</b>。你的差异化必须是“它不做的事”：任意 REST 端点、schema 变更自动适配、按表计价、可导出到本地 Excel。</li>
+<li><b>“转换”本身没有粘性</b>，粘性来自“定时 + 历史 + 告警 + 团队共享”。1.0 就要把“定时”做进去，否则用户用完一次就走。</li>
+<li><b>不要做 9000 个集成</b>。做 5 个源 + 1 个通用 REST/JSON 入口，剩下的交给用户的 OpenAPI/示例响应。</li>
+</ul>
+</div>

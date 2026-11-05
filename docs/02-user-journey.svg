@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1150" height="500" viewBox="0 0 1150 500" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif">
+<rect width="1150" height="500" fill="#fff"/>
+<text x="20" y="30" font-size="19" font-weight="700" fill="#0F172A">用户旅程与变现：从一次搜索到一笔订阅</text>
+<text x="20" y="52" font-size="11" fill="#64748B">上排 = 自助路径（SEO → 免费工具 → 付费墙）· 中排 = 激活与留存 · 下排 = 手工交付这条更快的现金流</text>
+<polyline points="210.0,122.0 228.0,122.0 228.0,122.0 246.0,122.0" fill="none" stroke="#94A3B8" stroke-width="1.4"/>
+<polyline points="436.0,122.0 454.0,122.0 454.0,122.0 472.0,122.0" fill="none" stroke="#94A3B8" stroke-width="1.4"/>
+<polyline points="662.0,122.0 680.0,122.0 680.0,122.0 698.0,122.0" fill="none" stroke="#94A3B8" stroke-width="1.4"/>
+<polyline points="888.0,122.0 906.0,122.0 906.0,122.0 924.0,122.0" fill="none" stroke="#94A3B8" stroke-width="1.4"/>
+<polyline points="1024.0,154.0 1024.0,202.0 1024.0,202.0 1024.0,250.0" fill="none" stroke="#94A3B8" stroke-width="1.4"/>
+<polyline points="924.0,282.0 906.0,282.0 906.0,282.0 888.0,282.0" fill="none" stroke="#94A3B8" stroke-width="1.4"/>
+<polyline points="698.0,282.0 680.0,282.0 680.0,282.0 662.0,282.0" fill="none" stroke="#94A3B8" stroke-width="1.4"/>
+<polyline points="472.0,282.0 454.0,282.0 454.0,282.0 436.0,282.0" fill="none" stroke="#94A3B8" stroke-width="1.4"/>
+<polyline points="246.0,282.0 228.0,282.0 228.0,282.0 210.0,282.0" fill="none" stroke="#94A3B8" stroke-width="1.4"/>
+<polyline points="210.0,432.0 228.0,432.0 228.0,432.0 246.0,432.0" fill="none" stroke="#94A3B8" stroke-width="1.4"/>
+<polyline points="436.0,432.0 454.0,432.0 454.0,432.0 472.0,432.0" fill="none" stroke="#94A3B8" stroke-width="1.4"/>
+<polyline points="341.0,400.0 341.0,357.0 1024.0,357.0 1024.0,314.0" fill="none" stroke="#94A3B8" stroke-width="1.4" stroke-dasharray="5 4"/>
+<rect x="20" y="90" width="190" height="64" rx="10" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.6"/>
+<text x="32" y="114" font-size="13" font-weight="700" fill="#334155">搜索长尾词</text>
+<text x="32" y="133" font-size="10" fill="#5A6675">clean csv online</text>
+<text x="32" y="147" font-size="10" fill="#5A6675">fix csv encoding</text>
+<rect x="246" y="90" width="190" height="64" rx="10" fill="#EEF4FF" stroke="#C7D7FB" stroke-width="1.6"/>
+<text x="258" y="114" font-size="13" font-weight="700" fill="#1E3A8A">工具落地页</text>
+<text x="258" y="133" font-size="10" fill="#5A6675">一个词 = 一个页面</text>
+<text x="258" y="147" font-size="10" fill="#5A6675">无注册即可用</text>
+<rect x="472" y="90" width="190" height="64" rx="10" fill="#EEF4FF" stroke="#C7D7FB" stroke-width="1.6"/>
+<text x="484" y="114" font-size="13" font-weight="700" fill="#1E3A8A">免费清洗</text>
+<text x="484" y="133" font-size="10" fill="#5A6675">浏览器内，不上传</text>
+<text x="484" y="147" font-size="10" fill="#5A6675">逐格 diff 建立信任</text>
+<rect x="698" y="90" width="190" height="64" rx="10" fill="#FDF2F8" stroke="#FBCFE8" stroke-width="1.6"/>
+<text x="710" y="114" font-size="13" font-weight="700" fill="#9D174D">付费触发点</text>
+<text x="710" y="133" font-size="10" fill="#5A6675">第 3 次上传 / 想保存规则</text>
+<text x="710" y="147" font-size="10" fill="#5A6675">想每天自动跑</text>
+<rect x="924" y="90" width="200" height="64" rx="10" fill="#EEF4FF" stroke="#C7D7FB" stroke-width="1.6"/>
+<text x="936" y="114" font-size="13" font-weight="700" fill="#1E3A8A">注册（邮箱）</text>
+<text x="936" y="133" font-size="10" fill="#5A6675">Free 1 条管道</text>
+<text x="936" y="147" font-size="10" fill="#5A6675">手动跑</text>
+<rect x="924" y="250" width="200" height="64" rx="10" fill="#EEF4FF" stroke="#C7D7FB" stroke-width="1.6"/>
+<text x="936" y="274" font-size="13" font-weight="700" fill="#1E3A8A">建管道</text>
+<text x="936" y="293" font-size="10" fill="#5A6675">选源 → 选规则 → 选目标</text>
+<text x="936" y="307" font-size="10" fill="#5A6675">TTFV 目标 &lt; 10 分钟</text>
+<rect x="698" y="250" width="190" height="64" rx="10" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1.6"/>
+<text x="710" y="274" font-size="13" font-weight="700" fill="#065F46">首次运行</text>
+<text x="710" y="293" font-size="10" fill="#5A6675">真实数据跑通</text>
+<text x="710" y="307" font-size="10" fill="#5A6675">看到 before/after</text>
+<rect x="472" y="250" width="190" height="64" rx="10" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1.6"/>
+<text x="484" y="274" font-size="13" font-weight="700" fill="#065F46">每日自动刷新</text>
+<text x="484" y="293" font-size="10" fill="#5A6675">托管表 + CSV</text>
+<text x="484" y="307" font-size="10" fill="#5A6675">行数历史</text>
+<rect x="246" y="250" width="190" height="64" rx="10" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1.6"/>
+<text x="258" y="274" font-size="13" font-weight="700" fill="#065F46">行数异常告警</text>
+<text x="258" y="293" font-size="10" fill="#5A6675">±20% 或归零</text>
+<text x="258" y="307" font-size="10" fill="#5A6675">邮件先于老板</text>
+<rect x="20" y="250" width="190" height="64" rx="10" fill="#FDF2F8" stroke="#FBCFE8" stroke-width="1.6"/>
+<text x="32" y="274" font-size="13" font-weight="700" fill="#9D174D">升级 Pro</text>
+<text x="32" y="293" font-size="10" fill="#5A6675">$19 → $49</text>
+<text x="32" y="307" font-size="10" fill="#5A6675">按管道数计价</text>
+<rect x="20" y="400" width="190" height="64" rx="10" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.6"/>
+<text x="32" y="424" font-size="13" font-weight="700" fill="#334155">社区外联</text>
+<text x="32" y="443" font-size="10" fill="#5A6675">40 条不带链接的私信</text>
+<rect x="246" y="400" width="190" height="64" rx="10" fill="#FDF2F8" stroke="#FBCFE8" stroke-width="1.6"/>
+<text x="258" y="424" font-size="13" font-weight="700" fill="#9D174D">手工交付</text>
+<text x="258" y="443" font-size="10" fill="#5A6675">$49 一次性清表</text>
+<text x="258" y="457" font-size="10" fill="#5A6675">72 小时收到第一笔钱</text>
+<rect x="472" y="400" width="190" height="64" rx="10" fill="#FDF2F8" stroke="#FBCFE8" stroke-width="1.6"/>
+<text x="484" y="424" font-size="13" font-weight="700" fill="#9D174D">转订阅</text>
+<text x="484" y="443" font-size="10" fill="#5A6675">规则固化 → $19/月</text>
+<text x="484" y="457" font-size="10" fill="#5A6675">从服务变成产品</text>
+<polygon points="246.0,122.0 239.7,125.0 239.7,119.0" fill="#94A3B8"/>
+<polygon points="472.0,122.0 465.7,125.0 465.7,119.0" fill="#94A3B8"/>
+<polygon points="698.0,122.0 691.7,125.0 691.7,119.0" fill="#94A3B8"/>
+<polygon points="924.0,122.0 917.7,125.0 917.7,119.0" fill="#94A3B8"/>
+<polygon points="1024.0,250.0 1021.0,243.7 1027.0,243.7" fill="#94A3B8"/>
+<polygon points="888.0,282.0 894.3,279.0 894.3,285.0" fill="#94A3B8"/>
+<polygon points="662.0,282.0 668.3,279.0 668.3,285.0" fill="#94A3B8"/>
+<polygon points="436.0,282.0 442.3,279.0 442.3,285.0" fill="#94A3B8"/>
+<polygon points="210.0,282.0 216.3,279.0 216.3,285.0" fill="#94A3B8"/>
+<polygon points="246.0,432.0 239.7,435.0 239.7,429.0" fill="#94A3B8"/>
+<polygon points="472.0,432.0 465.7,435.0 465.7,429.0" fill="#94A3B8"/>
+<polygon points="1024.0,314.0 1027.0,320.3 1021.0,320.3" fill="#94A3B8"/>
+<text x="682.5" y="360.0" font-size="10" fill="#64748B" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="4">同一批人</text>
+<rect x="22" y="470" width="12" height="12" rx="3" fill="#EEF4FF" stroke="#C7D7FB"/>
+<text x="39" y="480" font-size="10" fill="#64748B">用户动作</text>
+<rect x="95" y="470" width="12" height="12" rx="3" fill="#ECFDF5" stroke="#A7F3D0"/>
+<text x="112" y="480" font-size="10" fill="#64748B">系统动作</text>
+<rect x="168" y="470" width="12" height="12" rx="3" fill="#FDF2F8" stroke="#FBCFE8"/>
+<text x="185" y="480" font-size="10" fill="#64748B">收钱点</text>
+<rect x="231" y="470" width="12" height="12" rx="3" fill="#F8FAFC" stroke="#E2E8F0"/>
+<text x="248" y="480" font-size="10" fill="#64748B">获客</text>
+</svg>

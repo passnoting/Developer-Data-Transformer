@@ -1,0 +1,74 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="Privacy · FlowTable"
+  description="What FlowTable collects, what it never collects, and how long we keep it."
+>
+  <section class="hero" style="padding-bottom:16px">
+    <div class="wrap">
+      <h1 style="font-size:32px">Privacy</h1>
+      <p class="lead" style="font-size:16px">
+        Short version: the free tools never upload your file. Paid pipelines keep rules and
+        metadata, plus a 7-day snapshot so your table page can render.
+      </p>
+      <p style="font-size:13px;color:var(--ink3)">Last updated: [DATE]</p>
+    </div>
+  </section>
+
+  <section style="border-top:0;padding-top:0">
+    <div class="wrap" style="max-width:760px">
+      <h2 style="font-size:20px">1. What the free tools do</h2>
+      <p>
+        The CSV tools at <code>/tools/*</code> parse and clean files inside your browser.
+        <strong>No file, row, or cell is transmitted to our servers.</strong> There is no upload
+        endpoint for them to talk to.
+      </p>
+
+      <h2 style="font-size:20px">2. What paid pipelines store</h2>
+      <ul>
+        <li><strong>Account:</strong> your email address and an API key.</li>
+        <li><strong>Pipeline config:</strong> the source URL, the rules you saved, the schedule.</li>
+        <li><strong>Run metadata:</strong> timestamps, row counts, error messages, warnings.</li>
+        <li><strong>Result snapshot:</strong> the most recent output table, kept for
+          <strong>7 days</strong> and then deleted automatically. This is what your table page
+          renders. We do not build a history of your data.</li>
+      </ul>
+      <p>
+        We do not sell data, do not use it to train models, and do not share it except with the
+        processors listed below.
+      </p>
+
+      <h2 style="font-size:20px">3. Processors</h2>
+      <ul>
+        <li><strong>Cloudflare</strong> — hosting, Workers, D1, R2 (global edge network).</li>
+        <li><strong>Creem</strong> — payments and tax handling (they are the merchant of record).</li>
+        <li><strong>Resend</strong> — transactional email (alerts and run summaries).</li>
+      </ul>
+
+      <h2 style="font-size:20px">4. Cookies and analytics</h2>
+      <p>
+        No advertising cookies and no cross-site tracking. Analytics, if enabled, is
+        privacy-preserving and aggregate-only.
+      </p>
+
+      <h2 style="font-size:20px">5. Your rights</h2>
+      <p>
+        You can ask us to export or delete your account and all associated pipelines and runs at
+        any time by emailing <strong>[CONTACT EMAIL]</strong>. Deletion is permanent and usually
+        completed within 7 days.
+      </p>
+
+      <h2 style="font-size:20px">6. Contact</h2>
+      <p>
+        <strong>[CONTACT EMAIL]</strong> — operated by <strong>[YOUR LEGAL ENTITY]</strong>,
+        <strong>[JURISDICTION]</strong>.
+      </p>
+      <p style="font-size:12.5px;color:var(--ink3);margin-top:24px">
+        This page is a plain-language description of actual practice, not legal advice. Have it
+        reviewed before you rely on it.
+      </p>
+    </div>
+  </section>
+</Base>

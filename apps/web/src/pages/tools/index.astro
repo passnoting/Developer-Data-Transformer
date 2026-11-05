@@ -1,0 +1,64 @@
+---
+import Base from "../../layouts/Base.astro";
+
+// 每个工具页 = 一个真实搜索意图 = 一个免费入口。
+// 内容按"能不能排上 + 会不会转化"排序，不按数量堆。
+const tools = [
+  {
+    href: "/tools/clean-csv",
+    title: "Clean a messy CSV",
+    desc: "Trim, de-duplicate, fix dates and numbers, drop empty rows — see every changed cell.",
+    status: "live",
+  },
+  {
+    href: "/tools/json-to-csv",
+    title: "JSON → CSV",
+    desc: "Flatten nested JSON, pick the array root, get a spreadsheet-ready file.",
+    status: "next",
+  },
+  {
+    href: "/tools/fix-encoding",
+    title: "Fix CSV encoding (UTF-8 / GBK)",
+    desc: "Stop the mojibake. Detect the real encoding and re-export as UTF-8 with BOM.",
+    status: "next",
+  },
+  {
+    href: "/tools/merge-csv",
+    title: "Merge CSV files",
+    desc: "Stack many exports into one table, with a column that says which file each row came from.",
+    status: "next",
+  },
+  {
+    href: "/tools/dedupe",
+    title: "Remove duplicate rows",
+    desc: "Keep the first (or last) occurrence, match on one column or several.",
+    status: "next",
+  },
+];
+---
+
+<Base title="Free data tools · FlowTable" description="Free, browser-only tools for messy CSV and JSON. Nothing is uploaded.">
+  <section class="hero">
+    <div class="wrap">
+      <h1 style="font-size:34px">Free tools</h1>
+      <p class="lead" style="font-size:16.5px">
+        Every tool runs in your browser. No signup, no upload, no file size ransom.
+        When you want it to run <em>without you</em>, that's the paid product.
+      </p>
+    </div>
+  </section>
+
+  <section style="border-top:0;padding-top:0">
+    <div class="wrap">
+      <div class="grid3">
+        {tools.map((t) => (
+          <div class="card">
+            <div class="k">{t.status === "live" ? "● LIVE" : "○ PLANNED"}</div>
+            <h3><a href={t.href}>{t.title}</a></h3>
+            <p>{t.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,128 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="FlowTable · Any API → a clean, always-fresh spreadsheet">
+  <section class="hero">
+    <div class="wrap">
+      <h1>Your Monday report<br />shouldn't take three hours.</h1>
+      <p class="lead">
+        Point FlowTable at a CSV, an Excel file, or any API. Get back <strong>one clean,
+        validated table</strong> — refreshed every morning, with every changed cell logged and
+        reversible. No AI guessing. No warehouse to build.
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="/tools/clean-csv">Clean a file now — free</a>
+        <a class="btn" href="#how">See how it works</a>
+      </div>
+      <p style="font-size:13.5px;color:var(--ink3);margin-top:16px">
+        Nothing is uploaded. The free cleaner runs entirely in your browser.
+      </p>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <h2>Three steps, no code</h2>
+      <div class="grid3">
+        <div class="card">
+          <div class="k">01 / INGEST</div>
+          <h3>Point at your data</h3>
+          <p>
+            CSV and Excel upload, any REST endpoint with headers and pagination, or a preset for
+            Shopify and Stripe. Paste a sample response and we build the mapping for you.
+          </p>
+        </div>
+        <div class="card">
+          <div class="k">02 / CLEAN</div>
+          <h3>Fix it once, not every week</h3>
+          <p>
+            Twelve deterministic rules — dedupe, date normalisation, encoding repair, type
+            coercion, enum mapping, range checks. Every change shows a before/after diff.
+          </p>
+        </div>
+        <div class="card">
+          <div class="k">03 / DELIVER</div>
+          <h3>Then it runs without you</h3>
+          <p>
+            A daily refresh to a shareable table page and a CSV download. If the row count moves
+            more than 20%, you get an email before your boss does.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Built for the person who owns the spreadsheet</h2>
+      <ul class="checks">
+        <li><strong>Deterministic, not generative.</strong> Rules are rules. Open any cell to see what changed and why — then undo it.</li>
+        <li><strong>Schema drift is expected.</strong> When the vendor adds a column, we say so in plain English and map it, instead of silently dropping rows.</li>
+        <li><strong>Silent failures are the whole point.</strong> “All green” means nothing if the orders never arrived. We compare row counts, not log lines.</li>
+        <li><strong>Priced per table, not per task.</strong> $19 is $19. No end-of-month surprise.</li>
+        <li><strong>Your files stay yours.</strong> Free tools run in the browser; servers keep rules and metadata, snapshots expire in 7 days.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="wrap">
+      <h2>Pricing</h2>
+      <p class="lead" style="font-size:16px">
+        Start free. Pay when you want it to run without you.
+      </p>
+      <table class="pricing">
+        <thead>
+          <tr>
+            <th>Plan</th><th>Per month</th><th>Pipelines</th><th>Refresh</th><th>What you get</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Free</strong></td><td class="num">$0</td><td>—</td><td>manual</td>
+            <td>Browser cleaner, unlimited files up to 5 MB, no saved rules</td>
+          </tr>
+          <tr>
+            <td><strong>Starter</strong></td><td class="num">$19</td><td>3</td><td>daily</td>
+            <td>Saved rules, hosted table, CSV download, email alerts, 30-day history</td>
+          </tr>
+          <tr>
+            <td><strong>Pro</strong></td><td class="num">$49</td><td>20</td><td>hourly</td>
+            <td>Custom validation, audit log export, 2 seats, 100 MB files</td>
+          </tr>
+          <tr>
+            <td><strong>Team</strong></td><td class="num">$99</td><td>100</td><td>hourly</td>
+            <td>5 seats, API access, priority support</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:13px;color:var(--ink3);margin-top:14px">
+        Annual billing saves ~17%. Cancel anytime; your exported CSV is always yours.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Questions people actually ask</h2>
+      <div class="grid3">
+        <div class="card">
+          <h3>Is this another AI data cleaner?</h3>
+          <p>No. AI may suggest a rule; it never writes values into your cells. That is the
+            difference between a tool you can audit and one you have to trust.</p>
+        </div>
+        <div class="card">
+          <h3>Do you store my data?</h3>
+          <p>The free tools never upload anything. Paid pipelines keep a snapshot for 7 days so
+            your table page can render, then it is deleted.</p>
+        </div>
+        <div class="card">
+          <h3>Why not just use Zapier?</h3>
+          <p>Zapier charges per task and stops counting when a step silently halts. We charge per
+            table and alert on row-count anomalies — the failure mode Zapier calls “normal”.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,159 @@
+<h3 id="s5-5">5.5 小企业自动化平台</h3>
+
+<div class="box flat">
+<h5>一句话结论</h5>
+<p><b>这是“供给缺口”最大的一个，但也是最容易被误读的一个。</b>它的缺口不在“再做一个 Zapier”，而在 Zapier 们主动放弃的地方：<b>低端自助用户被涨价赶走，高端被 AI 叙事带走，中间留下一个没人管的地带——已经上线的工作流坏了，没人知道。</b></p>
+</div>
+
+<h4>2026 年发生的事：整个品类在往上走，把低端腾空了</h4>
+
+<div class="tw">
+<table class="compact">
+<thead><tr><th>变化</th><th>时间</th><th>对低端用户的影响</th></tr></thead>
+<tbody>
+<tr><td><b>Relay.app 关停</b>（账户与历史永久删除）</td><td>2026-09</td><td>“人机协同审批”这条路线整体消失</td></tr>
+<tr><td>Bardeen 从“自动化”转向抓取/线索</td><td>2025–2026</td><td>又少一个面向非技术用户的选择</td></tr>
+<tr><td>Relevance AI 取消自助定价，只留 Enterprise</td><td>2026</td><td>小客户被明确请出门</td></tr>
+<tr><td>Pipedream 转向“AI agent 的集成层”，自助档 $99/月起</td><td>2026</td><td>原来的 $0 开发者用户被放弃</td></tr>
+<tr><td>Zapier <b>2026-06 起</b>把 AI 步骤按模型分级并入同一个 task 池</td><td>2026-06</td><td>不想用 AI 也得为 AI 的计价买单</td></tr>
+<tr><td>Rows 关停（见 5.3）</td><td>2026-05-31</td><td>“AI 表格 + 连接器”这一格清空</td></tr>
+</tbody>
+<caption>来源：各公司官方公告与定价页（2026-11 抓取）；Zapier 的计价变化见官方 <code>pricing.md</code>（last_updated 2026-11-04）。</caption>
+</table>
+</div>
+
+<div class="box accent">
+<h5>这个模式在商业史上反复出现</h5>
+<p>当一个品类的主要玩家集体上移（去做企业、做 AI、做平台），低端不会消失，只会<b>失去服务</b>。而低端用户的需求并没有变：他们还是要“每天把订单从 Shopify 搬到表格里”。</p>
+<p>这正是独立开发者的经典窗口：<b>不是做得更好，而是接住被丢下的人。</b>窗口期通常 18–36 个月，之后要么被收购，要么被新平台重新覆盖。</p>
+</div>
+
+<h4>竞品与定价：task/credit 计价是品类默认，也是品类原罪</h4>
+
+<div class="tw">
+<table class="compact">
+<thead><tr><th>产品</th><th>免费层</th><th class="n">入门价</th><th>计量单位</th><th class="n">1 万单位/月约</th></tr></thead>
+<tbody>
+<tr><td>Zapier</td><td>100 tasks，仅 2 步</td><td class="n">$19.99/月（750 tasks）</td><td>task（每个成功 action）</td><td class="n">~$129</td></tr>
+<tr><td>Make</td><td>1,000 credits</td><td class="n">$9/月（10k credits）</td><td>credit（每个 module）</td><td class="n">$9–16</td></tr>
+<tr><td>n8n</td><td>自托管免费</td><td class="n">€20/月</td><td>execution（整条流程）</td><td class="n">€50</td></tr>
+<tr><td>Activepieces</td><td>1,000 credits</td><td class="n">$20/月</td><td>credit（仅 AI 计费）</td><td class="n">$20</td></tr>
+<tr><td>Pipedream</td><td>仅开发环境</td><td class="n">$99/月</td><td>credit</td><td class="n">$99</td></tr>
+<tr><td>Lindy</td><td>$50 credits（7 天）</td><td class="n">$49.99/人/月</td><td>credit</td><td class="n">$50+</td></tr>
+<tr><td>Dify</td><td>社区版免费</td><td class="n">$590/工作区/年</td><td>message credit</td><td class="n">—</td></tr>
+</tbody>
+<caption>价格查于 2026-11，读自各官网（Zapier 为其官方 pricing.md）；“1 万单位”为统一口径估算。</caption>
+</table>
+</div>
+
+<p><b>同一个“1 万次操作”，价格从 $9 到 $129，差 14 倍。</b>差异不在成本，而在计量单位的设计：Zapier 把一个 6 步流程跑 1,000 次算成 6,000 tasks；n8n 只算 1,000 次 execution。<b>用户感知到的不是“功能差异”，是“计价方式的欺骗感”。</b>这就是为什么“Zapier too expensive”能成为一个稳定的搜索词。</p>
+
+<h4>用户差评：三个层次的问题</h4>
+
+<h5>层次一：贵，而且贵得不可预测</h5>
+<blockquote>
+“anyone else getting crushed by the <b>Zapier tax</b> every month?”
+<em>—— Reddit r/SaaS 用户（经二手引用，原帖 403）。</em>
+</blockquote>
+<blockquote>
+“as for zapier, <b>it is expensive for what it is</b>. anyone that knows it, doesn't want to use it.”
+<em>—— HN。<a href="https://hn.algolia.com/api/v1/items/39404362">来源</a></em>
+</blockquote>
+<blockquote>
+“Recursion issue in Zap consumed <b>52K tasks</b> and blocked support response.”
+<em>—— Zapier 社区帖标题。一个递归 bug 吃掉五万次额度，客服还不管。<a href="https://community.zapier.com/troubleshooting-99/title-suggestion-recursion-issue-in-zap-consumed-52k-tasks-and-blocked-support-response-50256">来源</a></em>
+</blockquote>
+
+<h5>层次二：坏得静默——这是最值钱的一条</h5>
+<blockquote>
+Zapier 官方文档口径：<code>Safely halted</code> 的运行“<b>do not turn your Zap off – so they do not alert either</b>”。
+<em>—— 即：被安全暂停的 Zap 不会关闭，所以也不会告警。你的流程停了，但你不会收到任何通知。<a href="https://yehonatandev.com/blog/zapier-make-silent-failure-monitoring">来源（引 Zapier 帮助中心）</a></em>
+</blockquote>
+<blockquote>
+Make 的 <code>Ignore</code> 错误处理器让失败的 bundle 彻底消失：“<b>the run looks successful while fewer items were processed</b>”。
+<em>—— 运行看着是成功的，但实际处理的数据少了。<a href="https://yehonatandev.com/blog/zapier-make-silent-failure-monitoring">来源</a></em>
+</blockquote>
+<blockquote>
+“Retry from the failed node: <b>does it repeat the failed node's external effect</b>, and how do you guard against it?”
+<em>—— n8n 社区，2026-11-04。重试会不会重复扣款/重复发邮件？没人说得清。<a href="https://community.n8n.io/t/retry-from-the-failed-node-does-it-repeat-the-failed-nodes-external-effect-and-how-do-you-guard-against-it/326632">来源</a></em>
+</blockquote>
+
+<h5>层次三：维护成本被严重低估</h5>
+<blockquote>
+用户自述：<b>$800/月</b> 的 Zapier + <b>$400/月</b> 的配套服务 + <b>每月 15 小时</b>维护。
+<em>—— 一年约 $1.5 万，还得自己盯着。经二手引用（原帖 403）。</em>
+</blockquote>
+
+<div class="box warn">
+<h5>“静默失败”不是 bug，是产品设计</h5>
+<p>Zapier 把 <code>Filtered</code>（被筛选条件挡掉）和 <code>Safely halted</code>（安全暂停）定义为<b>正常状态</b>：不关闭 Zap、不告警、自动重放只处理真正 <code>errored</code> 的。Make 的 <code>Ignore</code> 处理器让失败项直接消失。额度用尽则整条流程停跑。</p>
+<p>结果就是那句最典型的客户抱怨：<b>“面板全绿，但订单没进表。”</b> 这不是偶发故障，这是<b>计费模型和告警模型共同产生的结构性盲区</b>。而 Zapier 原生的 Alerts + Observability API <b>只在 Enterprise 档</b>。</p>
+</div>
+
+<h4>需求与收入证据</h4>
+
+<div class="tw">
+<table class="compact">
+<thead><tr><th>信号</th><th>数据</th><th>解读</th></tr></thead>
+<tbody>
+<tr><td>Zapier</td><td>ARR 约 <b>$3.1 亿</b>（2023–24 估算）；$50 亿估值（2021 二级交易）；340 万企业用户</td><td>品类被验证，但增长停滞，转向 AI 与 Enterprise</td></tr>
+<tr><td>n8n</td><td>2025-03 $1.8 亿 C 轮 @ $25 亿；<b>2026-05 SAP 战略投资后估值 $52 亿</b></td><td>开源+自托管路线被大厂认可</td></tr>
+<tr><td>Make</td><td>2024 年被 Celonis 收购，收入未单独披露</td><td>被并入流程挖掘，独立叙事结束</td></tr>
+<tr><td>服务生态（AAA）</td><td>项目费 <b>$1,500–15,000</b>；月度托管 <b>$500–5,000</b>；毛利 70–90%</td><td><b>这是最被低估的信号</b>：企业愿意为“有人负责”付月费</td></tr>
+<tr><td>自由职业报价</td><td>Zapier 单流程 $300–800，跨系统 $3,000–10,000+；时薪 $40–90（Upwork 官方成本指南）</td><td>同样的事，人工价格是你的 SaaS 价格的 50–500 倍</td></tr>
+<tr><td>AI 员工落地率</td><td>MIT NANDA：<b>95% 的 GenAI pilot 无可量化 P&L 影响</b>；McKinsey：仅 23% 能规模化 agentic；Gartner：2027 年底 40%+ agentic 项目被取消</td><td>“卖 AI 员工”是逆风；“卖可靠性”是顺风</td></tr>
+</tbody>
+<caption>ARR/估值来自 Sacra、Latka、Bloomberg、SAP 公告等二手来源，均已标注；AAA 报价区间来自行业汇总与 Upwork 成本指南转引。</caption>
+</table>
+</div>
+
+<h4>SEO 关键词：这里藏着全场最好的一组词</h4>
+
+<div class="tw">
+<table class="compact">
+<thead><tr><th>关键词</th><th class="n">量级</th><th>意图</th><th class="n">KD</th><th>判断</th></tr></thead>
+<tbody>
+<tr><td><b>zapier monitoring</b></td><td class="n">300</td><td>交易</td><td class="n">10</td><td class="c"><span class="b g">★ 最优</span> SERP 无工具页</td></tr>
+<tr><td><b>zapier error alerts</b></td><td class="n">200</td><td>交易</td><td class="n">10</td><td class="c"><span class="b g">★ 最优</span></td></tr>
+<tr><td><b>automation monitoring tool</b></td><td class="n">400</td><td>商业</td><td class="n">12</td><td class="c"><span class="b g">★ 最优</span></td></tr>
+<tr><td>zapier too expensive</td><td class="n">400</td><td>商业</td><td class="n">15</td><td class="c"><span class="b g">可打</span> 适合对比页</td></tr>
+<tr><td>zapier task limit</td><td class="n">500</td><td>信息</td><td class="n">20</td><td class="c">中</td></tr>
+<tr><td>missed call text back</td><td class="n">1,600</td><td>商业</td><td class="n">30</td><td class="c"><span class="b g">可打</span> 垂直服务</td></tr>
+<tr><td>shopify to quickbooks automation</td><td class="n">900</td><td>商业</td><td class="n">25</td><td class="c"><span class="b g">可打</span></td></tr>
+<tr><td>google review request automation</td><td class="n">700</td><td>商业</td><td class="n">18</td><td class="c"><span class="b g">可打</span></td></tr>
+<tr><td>automate invoice reminders for small business</td><td class="n">250</td><td>商业</td><td class="n">12</td><td class="c"><span class="b g">最优</span></td></tr>
+<tr><td>hvac dispatch automation</td><td class="n">250</td><td>商业</td><td class="n">14</td><td class="c"><span class="b g">最优</span></td></tr>
+<tr><td>zapier alternative</td><td class="n">12,000</td><td>商业</td><td class="n">55</td><td class="c dn">别打</td></tr>
+<tr><td>workflow automation</td><td class="n">22,000</td><td>信息</td><td class="n">70</td><td class="c dn">别打</td></tr>
+</tbody>
+<caption>关键词来自 SERP 观察；量为区间估计；KD 为相对判断，不是 Ahrefs 数值。</caption>
+</table>
+</div>
+
+<p>注意最上面那三个词：<b><code>zapier monitoring</code>、<code>zapier error alerts</code>、<code>automation monitoring tool</code>——量不大（200–400），但意图极强，且 SERP 全是博客教程和厂商对比页，没有一个真正的工具型落地页。</b>这是本次调研里发现的最干净的一组词：搜索的人已经知道自己要买什么，只是还没找到卖家。</p>
+
+<h4>缺口判断</h4>
+
+<div class="tw">
+<table class="compact">
+<thead><tr><th>缺口</th><th>证据强度</th><th>为什么有空间</th><th>定价</th><th>一个人能做吗</th></tr></thead>
+<tbody>
+<tr><td><b>(a) 断链监控（静默失败告警）</b></td><td class="c"><span class="b a">强</span> 官方文档级证据</td><td>平台把“停跑”定义为正常；原生监控只在 Enterprise；用户只能靠人肉巡检或包月代管</td><td class="n">$19–49/月</td><td class="c"><span class="b g">能，且很快</span></td></tr>
+<tr><td><b>(b) 垂直行业成品自动化包</b></td><td class="c"><span class="b bb">中</span> 服务商生态自认垂直空缺</td><td>通用模板已饱和，HVAC/牙科/法律/房产仍有空位；Podium 在 10 万+ 本地商家验证了付费意愿</td><td class="n">$500–1,500 安装 + $200–500/月</td><td class="c"><span class="b">能，但要做服务</span></td></tr>
+<tr><td><b>(c) “AI 员工”可靠性层</b></td><td class="c"><span class="b bb">中</span> 失败率数据充分</td><td>95% 的 pilot 没有 P&L 影响；买家开始要求“出问题谁负责”</td><td class="n">$99–499/月</td><td class="c"><span class="b r">难</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="box warn">
+<h5>但“断链监控”有一个技术前提，必须提前验证</h5>
+<p>Zapier 的低档位<b>没有公开的 per-Zap 运行 API</b>，原生 Observability API 只在 Enterprise。所以纯 API 方案走不通，现实的切入路径只有三条：</p>
+<ol>
+<li><b>心跳/计数比对</b>：让用户在你的界面里配置“每应该有多少条”，你定时去目标端（Sheets、Airtable、DB）数行数，少了就告警。不依赖平台 API。</li>
+<li><b>Webhook 影子</b>：在关键链路里插一个你的 webhook 作为旁路探针。</li>
+<li><b>邮件/通知解析</b>：解析 Zapier 的错误邮件，归一化成告警。脆弱，但最快能上线。</li>
+</ol>
+<p>第一条是唯一可规模化的，也最像“产品”而不是“hack”。</p>
+</div>
+
+<p><b>结论：</b>这个方向的缺口是五个里最真实的，而且有一个罕见的特点——<b>它卖的是“保险”而不是“效率”</b>。保险的续费率远高于效率工具，因为取消订阅的那一刻，恐惧就回来了。但它的天花板也明显：目标客户是“已经在为 Zapier 付钱的人”，你要从他们已经很痛的预算里再切一刀，所以定价必须低于 $49。</p>

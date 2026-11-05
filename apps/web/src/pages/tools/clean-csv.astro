@@ -1,0 +1,212 @@
+---
+import Base from "../../layouts/Base.astro";
+---
+
+<Base
+  title="Clean CSV online — free, in your browser · FlowTable"
+  description="Remove duplicates, fix dates and encoding, normalise numbers in any CSV. Handles UTF-8, GBK and UTF-16. Runs entirely in your browser — nothing is uploaded."
+>
+  <section class="hero" style="padding-bottom:24px">
+    <div class="wrap">
+      <h1 style="font-size:34px">Clean a messy CSV</h1>
+      <p class="lead" style="font-size:16.5px">
+        Drop a file. We detect the encoding (UTF-8 / GBK / UTF-16), then trim, de-duplicate,
+        fix date formats, repair number notation and drop empty rows/columns — and show you
+        <strong>every cell we changed</strong>. Nothing leaves your browser.
+      </p>
+    </div>
+  </section>
+
+  <section style="border-top:0;padding-top:0">
+    <div class="wrap">
+      <label class="dropzone" id="dropzone" for="file">
+        <strong>Drop a .csv here, or click to choose</strong>
+        <p>UTF-8 / GBK / UTF-16 都能识别 · 最多 20 MB · 文件不离开你的电脑</p>
+        <input id="file" type="file" accept=".csv,.txt,text/csv" class="hidden" />
+      </label>
+
+      <div id="error" class="errbox hidden"></div>
+
+      <div id="result" class="hidden">
+        <div class="stats">
+          <div><b id="s-rows">—</b>rows out</div>
+          <div><b id="s-dropped">—</b>rows removed</div>
+          <div><b id="s-cells">—</b>cells changed</div>
+          <div><b id="s-cols">—</b>columns</div>
+        </div>
+
+        <p id="encoding" class="meta-line"></p>
+        <div id="warnings" class="warnbox hidden"></div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 6px">
+          <button class="btn primary" id="download">Download cleaned CSV</button>
+          <a class="btn" href="/#pricing">Run this every morning →</a>
+        </div>
+
+        <h2 style="font-size:18px;margin-top:26px">What changed <span id="diff-count" style="color:var(--ink3);font-weight:400"></span></h2>
+        <div class="scroll">
+          <table class="data">
+            <thead>
+              <tr><th>Row</th><th>Column</th><th>Before</th><th>After</th><th>Rule</th></tr>
+            </thead>
+            <tbody id="diffs"></tbody>
+          </table>
+        </div>
+
+        <h2 style="font-size:18px;margin-top:26px">Preview</h2>
+        <div class="scroll">
+          <table class="data" id="preview"></table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import { decodeText, parseCsv, runPipeline, toCsv } from "@flowtable/core";
+    import type { Dataset } from "@flowtable/core";
+    import { suggestRules } from "../../lib/auto-rules";
+
+    const MAX_BYTES = 20 * 1024 * 1024;
+
+    const dropzone = document.getElementById("dropzone") as HTMLLabelElement;
+    const input = document.getElementById("file") as HTMLInputElement;
+    const result = document.getElementById("result") as HTMLDivElement;
+    const errorBox = document.getElementById("error") as HTMLDivElement;
+    const warningsBox = document.getElementById("warnings") as HTMLDivElement;
+
+    let cleaned: Dataset | null = null;
+
+    const escapeHtml = (v: unknown): string =>
+      String(v ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+
+    const text = (el: HTMLElement | null, v: string): void => {
+      if (el) el.textContent = v;
+    };
+
+    function showError(message: string): void {
+      errorBox.textContent = message;
+      errorBox.classList.remove("hidden");
+      result.classList.add("hidden");
+    }
+
+    function hideError(): void {
+      errorBox.classList.add("hidden");
+      errorBox.textContent = "";
+    }
+
+    function renderDiffTable(
+      rows: Array<{ row: number; column: string; before: unknown; after: unknown; rule: string }>,
+    ): void {
+      const body = document.getElementById("diffs");
+      if (!body) return;
+      body.innerHTML = rows
+        .slice(0, 200)
+        .map(
+          (d) =>
+            `<tr><td>${d.row}</td><td>${escapeHtml(d.column)}</td>` +
+            `<td class="before">${escapeHtml(d.before)}</td>` +
+            `<td class="after">${escapeHtml(d.after)}</td>` +
+            `<td style="color:#6b7480">${escapeHtml(d.rule)}</td></tr>`,
+        )
+        .join("");
+    }
+
+    function renderPreview(ds: Dataset): void {
+      const table = document.getElementById("preview") as HTMLTableElement | null;
+      if (!table) return;
+      const head = `<thead><tr>${ds.columns
+        .map((c) => `<th>${escapeHtml(c)}</th>`)
+        .join("")}</tr></thead>`;
+      const body = ds.rows
+        .slice(0, 50)
+        .map((r) => `<tr>${ds.columns.map((c) => `<td>${escapeHtml(r[c])}</td>`).join("")}</tr>`)
+        .join("");
+      table.innerHTML = head + `<tbody>${body}</tbody>`;
+    }
+
+    async function handleFile(file: File): Promise<void> {
+      hideError();
+
+      if (file.size > MAX_BYTES) {
+        showError(`文件 ${(file.size / 1024 / 1024).toFixed(1)} MB，超过 20 MB 上限。请先拆分。`);
+        return;
+      }
+
+      // 关键：按字节读，不能 file.text()——那等于强制 UTF-8
+      const bytes = new Uint8Array(await file.arrayBuffer());
+      const decoded = decodeText(bytes);
+      if (!decoded.ok) {
+        showError(decoded.message);
+        return;
+      }
+
+      const parsed = parseCsv(decoded.text);
+      if (parsed.columns.length === 0) {
+        showError("这个文件没有可识别的表头（第一行）。确认是逗号分隔的 CSV 吗？");
+        return;
+      }
+
+      const out = runPipeline(parsed, suggestRules(parsed), { maxDiffs: 5000 });
+      cleaned = out.dataset;
+
+      text(document.getElementById("s-rows"), String(out.stats.rowsOut));
+      text(document.getElementById("s-dropped"), String(out.stats.droppedRows));
+      text(document.getElementById("s-cells"), String(out.stats.cellsChanged));
+      text(document.getElementById("s-cols"), String(out.dataset.columns.length));
+      text(
+        document.getElementById("diff-count"),
+        out.diffsTruncated ? `(showing first ${out.diffs.length})` : `(${out.diffs.length} cells)`,
+      );
+
+      const enc = document.getElementById("encoding");
+      if (enc) {
+        const label =
+          decoded.encoding === "utf-8" ? "UTF-8" : decoded.encoding.toUpperCase();
+        enc.textContent = `检测到编码：${label}${decoded.encoding === "utf-8" ? "" : "（已自动转换）"}`;
+      }
+
+      const warnings = [...decoded.warnings, ...out.warnings];
+      if (warnings.length > 0) {
+        warningsBox.classList.remove("hidden");
+        warningsBox.innerHTML = warnings.map(escapeHtml).join("<br>");
+      } else {
+        warningsBox.classList.add("hidden");
+      }
+
+      renderDiffTable(out.diffs);
+      renderPreview(out.dataset);
+      result.classList.remove("hidden");
+    }
+
+    input.addEventListener("change", () => {
+      const file = input.files?.[0];
+      if (file) void handleFile(file);
+    });
+
+    dropzone.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      dropzone.classList.add("hot");
+    });
+    dropzone.addEventListener("dragleave", () => dropzone.classList.remove("hot"));
+    dropzone.addEventListener("drop", (e) => {
+      e.preventDefault();
+      dropzone.classList.remove("hot");
+      const file = e.dataTransfer?.files?.[0];
+      if (file) void handleFile(file);
+    });
+
+    document.getElementById("download")?.addEventListener("click", () => {
+      if (!cleaned) return;
+      const blob = new Blob([toCsv(cleaned)], { type: "text/csv;charset=utf-8" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "cleaned.csv";
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+  </script>
+</Base>

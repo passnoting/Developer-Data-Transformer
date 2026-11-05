@@ -1,0 +1,24 @@
+{
+  "name": "flowtable",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@9.12.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @flowtable/web dev",
+    "dev:api": "pnpm --filter @flowtable/api dev",
+    "build": "pnpm -r build",
+    "test": "node packages/core/test/smoke.ts",
+    "check": "node packages/core/test/smoke.ts && node scripts/check-scaffold.mjs",
+    "db:migrate": "wrangler d1 execute flowtable --local --file=infra/d1/schema.sql --config apps/api/wrangler.toml",
+    "db:migrate:prod": "wrangler d1 execute flowtable --remote --file=infra/d1/schema.sql --config apps/api/wrangler.toml",
+    "db:seed": "wrangler d1 execute flowtable --local --file=infra/d1/seed-dev.sql --config apps/api/wrangler.toml",
+    "deploy:web": "pnpm --filter @flowtable/web build && wrangler pages deploy apps/web/dist --project-name=flowtable",
+    "deploy:api": "pnpm --filter @flowtable/api deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^3.90.0"
+  }
+}

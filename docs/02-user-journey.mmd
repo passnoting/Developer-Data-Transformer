@@ -1,0 +1,15 @@
+flowchart LR
+  subgraph ACQ["获客"]
+    direction LR
+    S["搜索长尾词"] --> L["工具落地页"] --> T["免费清洗"] --> P["付费触发点"] --> R["注册"]
+  end
+  subgraph ACT["激活与留存"]
+    direction RL
+    B["建管道"] --> F["首次运行"] --> DA["每日自动刷新"] --> AL["行数异常告警"] --> U["升级 Pro"]
+  end
+  subgraph SVC["服务化收款（更快）"]
+    direction LR
+    O["社区外联"] --> CC["手工交付 $49"] --> CV["转订阅 $19/月"]
+  end
+  R --> B
+  CC -.->|同一批人| B

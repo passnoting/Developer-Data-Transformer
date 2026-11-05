@@ -1,0 +1,183 @@
+<h3 id="s5-3">5.3 CSV / Excel 智能数据处理</h3>
+
+<div class="box flat">
+<h5>一句话结论</h5>
+<p><b>这是五个方向里“最容易拿到第一批付费用户”的一个，但必须先放弃“AI 表格”这个卖点。</b>一个拥有 220 万用户、83 亿次导入的产品（Rows）刚刚在 2026-05-31 关停——它做的事就是“AI + 表格 + 连接器”。活下来的是另一样东西：<b>清洗、校验、定时刷新</b>这些不性感的脏活。</p>
+</div>
+
+<h4>先讲一个刚刚发生的案例</h4>
+
+<p><a href="https://rows.com/pricing">Rows</a> 的定价页至今还在线（Free / $8 / $79），但公司已经不存在了。2026-02-22，创始人发博客宣布被 Superhuman 收购，理由写得很坦白：</p>
+
+<blockquote>
+“more than <b>2.2 million people</b> used Rows to execute over <b>17 billion</b> spreadsheet functions, import data from their business tools more than <b>8.3 billion times</b>… we plan to gradually <b>sunset the Rows product</b> over the next three months, with Rows.com fully winding down on <b>May 31, 2026</b>.”
+<em>—— Rows 官方博客，2026-02-22。<a href="https://rows.com/blog/post/rows-is-joining-superhuman">来源</a></em>
+</blockquote>
+
+<div class="box bad">
+<h5>这条新闻的真正含义</h5>
+<p>220 万用户、83 亿次导入，仍然没能让它成为一个独立生意。它被并入了 Coda/Superhuman 的套件，然后关停。<b>结论不是“表格没需求”，而是“AI 表格作为独立产品，价值会被套件吸走”。</b></p>
+<p>而与此同时，做“导入校验”的 OneSchema 卖到 $200/用户/月，做“嵌入式导入”的 Dromo 卖 $599/月，做“表格↔CRM 定时刷新”的 Coefficient 卖 $49/月。这些不性感的、面向工作流的工具，价格是 AI 表格的 5–30 倍，而且都还活着。</p>
+</div>
+
+<h4>竞品地图</h4>
+
+<div class="tw">
+<table class="compact">
+<thead><tr><th>产品</th><th>定位</th><th>免费限制</th><th class="n">最低付费</th><th>计量</th><th>月访问（估）</th></tr></thead>
+<tbody>
+<tr><td>Julius AI</td><td>上传 CSV 对话式分析</td><td>有额度</td><td class="n">unknown</td><td>消息/额度</td><td class="n">2.4M</td></tr>
+<tr><td>Rows</td><td>在线表格 + AI + 连接器</td><td>5 AI tasks，1MB</td><td class="n dn">已于 2026-05 关停</td><td>—</td><td class="c">—</td></tr>
+<tr><td>Quadratic</td><td>AI + Python/SQL 表格</td><td>有限 AI</td><td class="n">$18/用户/月</td><td>AI credits</td><td class="n">unknown</td></tr>
+<tr><td>Numerous.ai</td><td><code>=AI()</code> 批量清洗/分类</td><td>7 天试用</td><td class="n">$10/月</td><td>字符数 + 公式次数</td><td class="n">752K</td></tr>
+<tr><td>Formula Bot</td><td>文本生公式 + 分析</td><td>10 消息</td><td class="n">$20/月</td><td>AI Actions</td><td class="n">1.0M</td></tr>
+<tr><td>SheetAI</td><td>Sheets AI 函数，可 BYOK</td><td>BYOK 免费</td><td class="n">$12/月</td><td>~500 runs/月</td><td class="n">unknown</td></tr>
+<tr><td>Bricks</td><td>CSV → 仪表盘/报告</td><td>20 条 AI 消息</td><td class="n">$25/用户/月</td><td>AI messages</td><td class="n">unknown</td></tr>
+<tr><td>OpenRefine</td><td>本地开源清洗/聚类</td><td>全免费</td><td class="n">$0</td><td>—</td><td class="c">桌面</td></tr>
+<tr><td>Easy Data Transform</td><td>桌面可视化 ETL</td><td>全功能试用</td><td class="n">$99 一次性</td><td>授权</td><td class="c">桌面</td></tr>
+<tr><td>CSVbox</td><td>嵌入式 CSV 导入 + 校验</td><td>100 导入/5 行</td><td class="n">$16/月</td><td>导入数 + 行数</td><td class="n">unknown</td></tr>
+<tr><td>OneSchema</td><td>导入器 + AI 映射</td><td>2,000 credits</td><td class="n">$20/月</td><td>credits</td><td class="n">unknown</td></tr>
+<tr><td>Dromo</td><td>嵌入式导入 + AI 映射</td><td>sandbox</td><td class="n">$599/月</td><td>250 导入</td><td class="n">unknown</td></tr>
+<tr><td>Coefficient</td><td>Sheets ↔ CRM/DB 定时刷新</td><td>3 源 / 5k 行</td><td class="n">$49/月</td><td>刷新次数 + 席位</td><td class="n">unknown</td></tr>
+<tr><td>ConvertCSV</td><td>CSV↔JSON/SQL，纯前端</td><td>全免费</td><td class="n">$0（API 另计）</td><td>—</td><td class="n">~810K</td></tr>
+<tr><td>TableConvert</td><td>30+ 格式互转</td><td>免费（带广告）</td><td class="n">$12/月</td><td>credits</td><td class="n">~450K</td></tr>
+</tbody>
+<caption>价格查于 2026-11，读自各官网；月访问为 SimilarWeb/Alexa 方法第三方快照（2026-07），仅用于量级比较。</caption>
+</table>
+</div>
+
+<h4>定价结构：三个清晰的价格带</h4>
+
+<div class="tw">
+<table class="compact">
+<thead><tr><th>价格带</th><th>代表产品</th><th>卖的是什么</th><th>对独立开发者的含义</th></tr></thead>
+<tbody>
+<tr><td class="n"><b>$8–12</b></td><td>Rows $8、Numerous $10、SheetAI $12、TableConvert $12</td><td>个人自付的“单点功能”</td><td>走量，转化快，流失高</td></tr>
+<tr><td class="n"><b>$18–29</b></td><td>Quadratic $18、Formula Bot $20、Bricks $25</td><td>“AI 功能”的标配价</td><td><b>最舒服的区间</b>，个人卡能刷</td></tr>
+<tr><td class="n"><b>$37–49</b></td><td>Gumloop $37、Coefficient $49</td><td>定时 + 多源 + 团队</td><td>需要“省一个工时”的价值证明</td></tr>
+<tr><td class="n"><b>$99+</b></td><td>Coefficient $99/席、OneSchema $200/席、Dromo $599</td><td>校验、合规、嵌入式、团队协作</td><td>一个人做不了交付，但可以做轻量版</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>这个结构说明了一件很重要的事：<b>“清洗”本身只值 $9–29，“清洗 + 定时 + 校验 + 审计”值 $49–599。</b>中间那 10 倍差价，就是产品化的空间。便宜的档位（CSVbox $16）只做一次性转换；贵的档位（Dromo $599）要工程接入。中间那层“运营自己配规则、每天跑、出问题能看到”几乎是空的。</p>
+
+<h4>用户差评：两类恐惧，一类技术债</h4>
+
+<h5>恐惧一：AI 会编数据</h5>
+<blockquote>
+“AI hallucinates. That is a fact. <b>Trusting language models to fill spreadsheet cells ought to be an arrestable offense.</b>”
+<em>—— HN。<a href="https://news.ycombinator.com/item?id=48140615">来源</a></em>
+</blockquote>
+<blockquote>
+“an AI may simply decide to <b>hallucinate realistic column values</b> rather than extracting its assigned input… <b>How do you QA this?</b>”
+<em>—— HN。<a href="https://news.ycombinator.com/item?id=45825204">来源</a></em>
+</blockquote>
+
+<h5>恐惧二：文件格式会毁数据</h5>
+<blockquote>
+“<b>The simple act of opening the CSV and hitting save loses data.</b>”
+<em>—— HN。<a href="https://news.ycombinator.com/item?id=24071026">来源</a></em>
+</blockquote>
+<blockquote>
+“Excel for Windows does not correctly write UTF-8… Mac lists 'UTF-8' but <b>does not import UTF-8 CSV</b>.”
+<em>—— HN。<a href="https://news.ycombinator.com/item?id=8968108">来源</a></em>
+</blockquote>
+<blockquote>
+“Excel and Numbers <b>don't even agree on how to import the same CSV file</b>.”
+<em>—— HN。<a href="https://news.ycombinator.com/item?id=28226243">来源</a></em>
+</blockquote>
+
+<h5>技术债：大文件就崩</h5>
+<blockquote>
+“for larger sets (+1GB) <b>it starts to slow down and eventually will fail to commit changes</b>.”
+<em>—— HN 评 OpenRefine。<a href="https://news.ycombinator.com/item?id=7807716">来源</a></em>
+</blockquote>
+
+<div class="box accent">
+<h5>这两类恐惧合起来，定义了一个反直觉的卖点</h5>
+<p>所有竞品都在往“AI 更聪明”的方向卷，而用户的真实恐惧是“AI 别乱动我的数据”。所以最强的定位不是“AI 帮你清洗”，而是<b>“每一步都能看到、能回滚、能审计的清洗”</b>——确定性规则优先，AI 只用来<b>建议规则</b>而不是<b>填值</b>。</p>
+<p>这句话在 2026 年是一个差异化点，因为它和大厂的叙事相反，而且可以被验证：用户可以点开任意一个被改动的单元格，看到“为什么改、改前是什么、依据哪条规则”。</p>
+</div>
+
+<h4>需求与收入证据</h4>
+
+<div class="tw">
+<table class="compact">
+<thead><tr><th>产品</th><th>规模/收入</th><th>来源与性质</th></tr></thead>
+<tbody>
+<tr><td>Rows</td><td>220 万用户、83 亿次导入 → <b>被收购并关停</b></td><td>官方博客（一手）</td></tr>
+<tr><td>Julius AI</td><td>200 万用户；2025-07 融资 $10M；零 VC 起步</td><td>TBPN 报道（二手）</td></tr>
+<tr><td>Numerous.ai</td><td>ARR <b>约 $55 万</b>（估算），5 人团队</td><td>GetLatka（第三方估算）</td></tr>
+<tr><td>Formula Bot</td><td>ARR <b>$50 万–$100 万</b>；4 个月到 $10 万</td><td>Startup Founder Stories / 播客（二手）</td></tr>
+<tr><td>ConvertCSV</td><td>月访问约 81 万，纯免费 + 捐赠 + API</td><td>第三方流量估算；广告收入估 $1K–6.5K/月</td></tr>
+<tr><td>TableConvert</td><td>月访问约 45 万，$12/$29/$79 订阅 + API</td><td>同上</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>这组数字给出的判断很明确：<b>这个赛道能养活一个人，但很难养活一家公司。</b>$50–100 万 ARR 是独立产品的天花板区间，而达到这个量级的产品（Numerous、Formula Bot）都用了 2–4 年。<b>对“先拿到第一批付费用户”这个目标，这恰恰是合适的——你不需要 $100 万 ARR，你需要 10 个付 $19 的人。</b></p>
+
+<h4>SEO 关键词：这是五个方向里唯一有“实测数据”的</h4>
+
+<div class="tw">
+<table class="compact">
+<thead><tr><th>关键词</th><th class="n">月搜</th><th>意图</th><th class="n">KD</th><th>判断</th></tr></thead>
+<tbody>
+<tr><td>csv to json</td><td class="n">40,000</td><td>工具</td><td class="n">55</td><td class="c dn">大站占满</td></tr>
+<tr><td>csv to excel</td><td class="n">30,000</td><td>工具</td><td class="n">50</td><td class="c dn">大站占满</td></tr>
+<tr><td>json to csv</td><td class="n">20,000</td><td>工具</td><td class="n">48</td><td class="c dn">大站占满</td></tr>
+<tr><td>remove duplicates in excel</td><td class="n">18,000</td><td>how-to</td><td class="n">45</td><td class="c">中</td></tr>
+<tr><td>excel formula generator</td><td class="n">1,000</td><td>工具</td><td class="n">6</td><td class="c"><span class="b r">陷阱</span> KD 低但已被套利饱和</td></tr>
+<tr><td>merge csv files</td><td class="n">2,500</td><td>工具</td><td class="n">25</td><td class="c"><span class="b g">可打</span></td></tr>
+<tr><td>clean csv online</td><td class="n">1,000</td><td>工具</td><td class="n">22</td><td class="c"><span class="b g">可打</span></td></tr>
+<tr><td>csv validator</td><td class="n">800</td><td>工具</td><td class="n">20</td><td class="c"><span class="b g">最优</span></td></tr>
+<tr><td>split csv file</td><td class="n">1,500</td><td>工具</td><td class="n">28</td><td class="c"><span class="b g">可打</span></td></tr>
+<tr><td>fix csv encoding utf-8</td><td class="n">300</td><td>故障</td><td class="n">10</td><td class="c"><span class="b g">最优</span> 论坛结果为主</td></tr>
+<tr><td>remove duplicates from csv keep first</td><td class="n">200</td><td>精确</td><td class="n">8</td><td class="c"><span class="b g">最优</span></td></tr>
+<tr><td>validate csv before import</td><td class="n">90</td><td>商业</td><td class="n">5</td><td class="c"><span class="b g">金句词</span> 意图=付费</td></tr>
+<tr><td>dedupe csv online</td><td class="n">120</td><td>工具</td><td class="n">6</td><td class="c"><span class="b g">最优</span></td></tr>
+<tr><td>csv delimiter changer</td><td class="n">200</td><td>工具</td><td class="n">9</td><td class="c"><span class="b g">最优</span></td></tr>
+</tbody>
+<caption>本表是五个方向中唯一有第三方工具实测值（† 标记者为 DataForSEO 数据）的一组；其余为区间估计。</caption>
+</table>
+</div>
+
+<p>关键词结构非常清楚：<b>头部（2 万–4 万）被 ConvertCSV、TableConvert、Aspose、CloudConvert、Microsoft 官方的工具页锁死，别去打。</b>但 KD &lt; 20 的长尾有几十个，而且 SERP 里全是论坛帖、博客和十年前的工具站。<b>“20 个工具页 + 5 篇对比页”就能吃到第一批自然流量</b>——这是 0 预算唯一能规模化的获客方式。</p>
+
+<div class="box warn">
+<h5>但有一个必须承认的陷阱</h5>
+<p><code>excel formula generator</code> 月搜 1,000、KD 只有 6，看起来是完美目标。实际上它的首页被 Microsoft、Adobe 和一批“AI 公式生成器”占满，这类词<b>流量大、转化极差、已经被套利到没有利润</b>。判断标准不是 KD，而是<b>“排名前三的页面里，有没有一个真的在卖东西”</b>——如果没有，说明流量不变现；如果有，说明有人在收钱，你也能。</p>
+</div>
+
+<h4>缺口判断</h4>
+
+<div class="tw">
+<table class="compact">
+<thead><tr><th>缺口</th><th>谁在做</th><th>为什么有空间</th><th>定价</th><th>一个人能做吗</th></tr></thead>
+<tbody>
+<tr><td><b>(a) 中价位的“定时 + 校验 + 审计”清洗</b></td><td>CSVbox $16（太轻）、OneSchema $200（太重）、Coefficient $49（只管连接）</td><td>便宜档只做一次性；贵档要工程接入；中间那层“运营自己配规则、每天跑、有审计”是空的</td><td class="n">$29–99/月</td><td class="c"><span class="b g">能</span></td></tr>
+<tr><td><b>(b) Excel 模型体检</b></td><td>几乎没有产品，只有审计咨询</td><td>会计/FP&A 痛感极强、愿付高价、交付物是报告；AI 只解释不改数，规避幻觉</td><td class="n">$99–499/次</td><td class="c"><span class="b">能，但慢</span></td></tr>
+<tr><td><b>(c) 本地优先的付费清洗</b></td><td>ConvertCSV（免费）、Easy Data Transform（$99 买断）</td><td>法务/医疗/财务不敢上传；免费站没有“规则 + 校验 + 批量”</td><td class="n">$9–19/月</td><td class="c"><span class="b g">能</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="box good">
+<h5>为什么它可能是你的第一站</h5>
+<ul>
+<li><b>感知价值不需要教育。</b>“这张表有 3,412 个重复行、17 个日期格式、9 个空列”——用户一眼就懂，不需要解释 ROI。</li>
+<li><b>定价有锚。</b>$19 是这一品类的标准价，不需要发明新的计价单位。</li>
+<li><b>获客靠内容，不靠人脉。</b>长尾词明确、SERP 弱、工具页天然可分享。</li>
+<li><b>成本几乎为零。</b>浏览器内 WASM 处理，不上传文件，连服务器都不用。</li>
+</ul>
+</div>
+
+<div class="box warn">
+<h5>但它的三个结构性弱点必须承认</h5>
+<ul>
+<li><b>决策者太分散。</b>买的人可能是一个行政、一个会计、一个运营，没有统一的社区可以触达。</li>
+<li><b>“清洗”是一次性需求。</b>用户清完就走，所以必须把“定时 + 监控”做进产品，否则没有续费理由。</li>
+<li><b>大厂随时能做。</b>Google Sheets 加一个“清理建议”，Excel 加一个 Copilot 按钮，就能吃掉一半场景。你的护城河只能是“跨源 + 可审计 + 批量”。</li>
+</ul>
+</div>

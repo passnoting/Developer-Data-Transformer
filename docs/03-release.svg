@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1150" height="480" viewBox="0 0 1150 480" font-family="-apple-system,Segoe UI,Microsoft YaHei,sans-serif">
+<rect width="1150" height="480" fill="#fff"/>
+<text x="20" y="30" font-size="19" font-weight="700" fill="#0F172A">发布与运维：从一次 commit 到客户看到新数据</text>
+<text x="20" y="52" font-size="11" fill="#64748B">静态站走 Pages，后端走 Workers；迁移幂等、先备份；任何一步失败都有明确回滚动作</text>
+<polyline points="220.0,131.0 235.0,131.0 235.0,131.0 250.0,131.0" fill="none" stroke="#94A3B8" stroke-width="1.4"/>
+<polyline points="430.0,131.0 445.0,131.0 445.0,131.0 460.0,131.0" fill="none" stroke="#94A3B8" stroke-width="1.4"/>
+<polyline points="670.0,131.0 685.0,131.0 685.0,131.0 700.0,131.0" fill="none" stroke="#94A3B8" stroke-width="1.4"/>
+<polyline points="880.0,131.0 895.0,131.0 895.0,131.0 910.0,131.0" fill="none" stroke="#94A3B8" stroke-width="1.4"/>
+<polyline points="1015.0,166.0 1015.0,201.0 1015.0,201.0 1015.0,236.0" fill="none" stroke="#94A3B8" stroke-width="1.4"/>
+<polyline points="910.0,271.0 895.0,271.0 895.0,271.0 880.0,271.0" fill="none" stroke="#94A3B8" stroke-width="1.4"/>
+<polyline points="700.0,271.0 685.0,271.0 685.0,271.0 670.0,271.0" fill="none" stroke="#94A3B8" stroke-width="1.4"/>
+<polyline points="460.0,271.0 445.0,271.0 445.0,271.0 430.0,271.0" fill="none" stroke="#94A3B8" stroke-width="1.4"/>
+<polyline points="250.0,271.0 235.0,271.0 235.0,271.0 220.0,271.0" fill="none" stroke="#94A3B8" stroke-width="1.4" stroke-dasharray="5 4"/>
+<polyline points="340.0,306.0 340.0,341.0 120.0,341.0 120.0,376.0" fill="none" stroke="#94A3B8" stroke-width="1.4"/>
+<polyline points="220.0,411.0 235.0,411.0 235.0,411.0 250.0,411.0" fill="none" stroke="#94A3B8" stroke-width="1.4"/>
+<rect x="20" y="96" width="200" height="70" rx="10" fill="#EEF4FF" stroke="#C7D7FB" stroke-width="1.6"/>
+<text x="32" y="120" font-size="13" font-weight="700" fill="#1E3A8A">本地开发</text>
+<text x="32" y="139" font-size="10" fill="#5A6675">pnpm dev / dev:api</text>
+<text x="32" y="153" font-size="10" fill="#5A6675">node 直接跑 TS 测试</text>
+<rect x="250" y="96" width="180" height="70" rx="10" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.6"/>
+<text x="262" y="120" font-size="13" font-weight="700" fill="#334155">git push</text>
+<text x="262" y="139" font-size="10" fill="#5A6675">feature 分支</text>
+<rect x="460" y="96" width="210" height="70" rx="10" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1.6"/>
+<text x="472" y="120" font-size="13" font-weight="700" fill="#065F46">Cloudflare Pages 构建</text>
+<text x="472" y="139" font-size="10" fill="#5A6675">预览 URL（每个 PR 一个）</text>
+<text x="472" y="153" font-size="10" fill="#5A6675">静态产物 apps/web/dist</text>
+<rect x="700" y="96" width="180" height="70" rx="10" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.6"/>
+<text x="712" y="120" font-size="13" font-weight="700" fill="#334155">冒烟检查</text>
+<text x="712" y="139" font-size="10" fill="#5A6675">工具页能跑</text>
+<text x="712" y="153" font-size="10" fill="#5A6675">/api/health 通</text>
+<rect x="910" y="96" width="210" height="70" rx="10" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1.6"/>
+<text x="922" y="120" font-size="13" font-weight="700" fill="#065F46">合并 main → 生产</text>
+<text x="922" y="139" font-size="10" fill="#5A6675">Pages 自动部署</text>
+<text x="922" y="153" font-size="10" fill="#5A6675">域名 + 缓存刷新</text>
+<rect x="910" y="236" width="210" height="70" rx="10" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1.6"/>
+<text x="922" y="260" font-size="13" font-weight="700" fill="#065F46">Worker 部署</text>
+<text x="922" y="279" font-size="10" fill="#5A6675">wrangler deploy</text>
+<text x="922" y="293" font-size="10" fill="#5A6675">绑定 D1 / R2</text>
+<rect x="700" y="236" width="180" height="70" rx="10" fill="#FFF7ED" stroke="#FED7AA" stroke-width="1.6"/>
+<text x="712" y="260" font-size="13" font-weight="700" fill="#9A3412">D1 迁移</text>
+<text x="712" y="279" font-size="10" fill="#5A6675">schema.sql 幂等</text>
+<text x="712" y="293" font-size="10" fill="#5A6675">先备份再执行</text>
+<rect x="460" y="236" width="210" height="70" rx="10" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1.6"/>
+<text x="472" y="260" font-size="13" font-weight="700" fill="#065F46">Cron 生效</text>
+<text x="472" y="279" font-size="10" fill="#5A6675">每日 06:00 跑全量</text>
+<text x="472" y="293" font-size="10" fill="#5A6675">每小时跑 Pro</text>
+<rect x="250" y="236" width="180" height="70" rx="10" fill="#FFF7ED" stroke="#FED7AA" stroke-width="1.6"/>
+<text x="262" y="260" font-size="13" font-weight="700" fill="#9A3412">监控与告警</text>
+<text x="262" y="279" font-size="10" fill="#5A6675">运行失败 / 行数异常</text>
+<text x="262" y="293" font-size="10" fill="#5A6675">自检 job</text>
+<rect x="20" y="236" width="200" height="70" rx="10" fill="#FDF2F8" stroke="#FBCFE8" stroke-width="1.6"/>
+<text x="32" y="260" font-size="13" font-weight="700" fill="#9D174D">回滚</text>
+<text x="32" y="279" font-size="10" fill="#5A6675">Pages：回退部署</text>
+<text x="32" y="293" font-size="10" fill="#5A6675">Worker：wrangler rollback</text>
+<rect x="20" y="376" width="200" height="70" rx="10" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1.6"/>
+<text x="32" y="400" font-size="13" font-weight="700" fill="#5B21B6">交付给客户</text>
+<text x="32" y="419" font-size="10" fill="#5A6675">托管表 + CSV</text>
+<text x="32" y="433" font-size="10" fill="#5A6675">邮件告警</text>
+<rect x="250" y="376" width="180" height="70" rx="10" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.6"/>
+<text x="262" y="400" font-size="13" font-weight="700" fill="#334155">支持与迭代</text>
+<text x="262" y="419" font-size="10" fill="#5A6675">邮件支持</text>
+<text x="262" y="433" font-size="10" fill="#5A6675">按流失原因改产品</text>
+<polygon points="250.0,131.0 243.7,134.0 243.7,128.0" fill="#94A3B8"/>
+<polygon points="460.0,131.0 453.7,134.0 453.7,128.0" fill="#94A3B8"/>
+<polygon points="700.0,131.0 693.7,134.0 693.7,128.0" fill="#94A3B8"/>
+<polygon points="910.0,131.0 903.7,134.0 903.7,128.0" fill="#94A3B8"/>
+<polygon points="1015.0,236.0 1012.0,229.7 1018.0,229.7" fill="#94A3B8"/>
+<polygon points="880.0,271.0 886.3,268.0 886.3,274.0" fill="#94A3B8"/>
+<polygon points="670.0,271.0 676.3,268.0 676.3,274.0" fill="#94A3B8"/>
+<polygon points="430.0,271.0 436.3,268.0 436.3,274.0" fill="#94A3B8"/>
+<polygon points="220.0,271.0 226.3,268.0 226.3,274.0" fill="#94A3B8"/>
+<polygon points="120.0,376.0 117.0,369.7 123.0,369.7" fill="#94A3B8"/>
+<polygon points="250.0,411.0 243.7,414.0 243.7,408.0" fill="#94A3B8"/>
+<text x="230.0" y="344.0" font-size="10" fill="#64748B" text-anchor="middle" paint-order="stroke" stroke="#fff" stroke-width="4">健康</text>
+<rect x="22" y="450" width="12" height="12" rx="3" fill="#EEF4FF" stroke="#C7D7FB"/>
+<text x="39" y="460" font-size="10" fill="#64748B">本地</text>
+<rect x="75" y="450" width="12" height="12" rx="3" fill="#ECFDF5" stroke="#A7F3D0"/>
+<text x="92" y="460" font-size="10" fill="#64748B">CI / 运行时</text>
+<rect x="188" y="450" width="12" height="12" rx="3" fill="#FFF7ED" stroke="#FED7AA"/>
+<text x="205" y="460" font-size="10" fill="#64748B">数据</text>
+<rect x="241" y="450" width="12" height="12" rx="3" fill="#F8FAFC" stroke="#E2E8F0"/>
+<text x="258" y="460" font-size="10" fill="#64748B">检查点</text>
+</svg>

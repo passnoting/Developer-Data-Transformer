@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+# 托管表页是对外分享的只读快照，不需要被收录
+Disallow: /t/
+
+Sitemap: https://flowtable.pages.dev/sitemap.xml

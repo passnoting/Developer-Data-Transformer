@@ -1,0 +1,55 @@
+<h2 id="s1"><span class="num">01</span>先拆掉三个前提</h2>
+
+<p class="lead">你描述的路径是：写一个网站服务 → 上传到 Chrome 商店 → 接自己的支付 → 靠订阅赚钱。这条路径里，三步是对的，一步是幻觉。先把幻觉拆掉，后面的数据才有意义。</p>
+
+<h3>前提一：“上传到 Chrome 商店” ≠ 获得渠道</h3>
+
+<p>Chrome 应用商店是一个<b>安装入口</b>，不是一个<b>分发渠道</b>。它没有推荐算法给你冷启动流量，没有站内搜索的购买意图，也没有内置收款——内置支付在 2021 年就被 Google 关停了（<a href="https://developer.chrome.com/docs/webstore/cws-payments-deprecation">官方弃用公告</a>）。所以你“接自己的支付”这一步不是可选项，是唯一选项。</p>
+
+<p>更关键的是分布。第三方对商店全量数据的抓取统计显示，<b>约 91.5% 的扩展用户数不足 1,000</b>（<a href="https://crawlora.net/blog/chrome-extension-graveyard-2026">Crawlora, 2026</a>，其标题即“Chrome Web Store Graveyard”）。也就是说，上架这个动作本身，几乎不改变你的获客难度——它只是让你“可以被安装”。</p>
+
+<div class="box warn">
+  <h5>这意味着什么</h5>
+  <p>扩展适合做<b>“已经在用某个网站的人”的第二入口</b>（比如你的用户在 Google Sheets 里、在 Shopify 后台里、在某个 API 文档页里），而不是做<b>“让人发现你”的第一入口</b>。如果你的获客计划里，最重要的一步是“上架”，那这个计划在第一步就空了。</p>
+</div>
+
+<h3>前提二：“接上支付码” ≠ 能收全球的钱</h3>
+
+<p>全球英语市场的收款，真正的问题不是“能不能收”，而是<b>合规由谁承担</b>。你卖订阅给 30 个国家的个人和小公司，就同时背上了欧盟 VAT、英国 VAT、美国各州 sales tax、澳洲 GST 的登记与申报义务。以个人身份、100 美元预算，这条路走不通。</p>
+
+<p>所以独立开发者的标准解法是<b>记录商户（Merchant of Record, MoR）</b>：平台在法律上是卖方，代你收税、代你开票、代你处理退款与拒付，你只管收净额。代价是费率更高：</p>
+
+<div class="tw">
+<table>
+<thead><tr><th>通道</th><th class="n">费率</th><th class="n">月费</th><th>代缴税</th><th>适合谁</th></tr></thead>
+<tbody>
+<tr><td>Stripe（直连）</td><td class="n">2.9% + $0.30<br><span class="small">跨境卡 +1.5%，换汇 +1%</span></td><td class="n">$0</td><td class="c"><span class="b r">否</span></td><td>有实体、能自己报税</td></tr>
+<tr><td>Paddle</td><td class="n">5% + $0.50</td><td class="n">$0</td><td class="c"><span class="b g">是</span></td><td>标准 SaaS 订阅</td></tr>
+<tr><td>Lemon Squeezy</td><td class="n">5% + $0.50</td><td class="n">$0</td><td class="c"><span class="b g">是</span></td><td>独立开发者（已并入 Stripe）</td></tr>
+<tr><td>Polar</td><td class="n">5%（Free）/ 4%（Pro）</td><td class="n">$0 / $25</td><td class="c"><span class="b g">是</span></td><td>开发者工具、开源项目</td></tr>
+</tbody>
+<caption>费率查于 2026-11；来源：各家 pricing 页与 <a href="https://fintechspecs.com/blog/merchant-of-record-fees-compared/">FintechSpecs 2026-10 对比</a>。Stripe 跨境与换汇附加费按官方公示口径。</caption>
+</table>
+</div>
+
+<p>算一笔最实在的账：一个 $19/月的订阅，走 MoR 实收约 <b>$17.55</b>（5% + $0.5），一年约 $210。30 个这样的客户，年净收入约 <b>$6,300</b>。这不是“赚钱方案”，这是“验证方案”。真正的杠杆在后面——但第一步必须先接受这个量级。</p>
+
+<div class="box bad">
+  <h5>最容易踩的坑</h5>
+  <p>用 Stripe 直连、不做税务登记，在欧盟/英国卖出第一批订阅后，VAT 义务就已经产生。金额小的时候没人管，一旦月流水过几千美元、或被平台标记，补税+罚金会吃掉全部利润。<b>100 美元预算下，唯一正确的选择是 MoR。</b></p>
+</div>
+
+<h3>前提三：“有人订阅” ≠ 这是生意</h3>
+
+<p>订阅制把“一次性成交”变成了“持续交付”。$19/月 的产品，客户每月都在问自己一次“我还需要吗”。消费级工具的年流失率通常在 30%–50%，B2B 小团队在 15%–30%。这意味着：<b>你每个月要新增的客户里，有三分之一只是在补漏</b>。</p>
+
+<p>而付费用户会带来三样你在 0 预算下最缺的东西：客服工单（时薪换不来）、功能请求（把你变成外包）、以及退款争议（MoR 会站在规则一边）。所以“卖点更好”的真正含义不是“更容易卖”，而是<b>“卖出去之后，一个人扛得住”</b>。这条标准会筛掉很多看起来诱人的方向。</p>
+
+<div class="kpis">
+  <div class="kpi"><div class="v">91.5%</div><div class="l">Chrome 扩展用户数 &lt; 1,000</div><div class="s">Crawlora 2026 抓取统计</div></div>
+  <div class="kpi"><div class="v">5%+$0.5</div><div class="l">MoR 抽成（Paddle / LS）</div><div class="s">$19 订阅实收 $17.55</div></div>
+  <div class="kpi"><div class="v">$210</div><div class="l">单个 $19/月 客户的年净收入</div><div class="s">扣除 MoR 费用</div></div>
+  <div class="kpi"><div class="v">30–50%</div><div class="l">消费级工具年流失率区间</div><div class="s">行业经验值，非单一来源</div></div>
+</div>
+
+<p>把这三个前提摆正之后，问题就变成了一个非常具体的工程问题：<b>在 5 个候选方向里，哪一个的“供给缺口”大到一个人用 6 周能做出来、并且能靠内容而不是靠销售拿到前 10 个付费用户？</b>下面开始用数据回答。</p>

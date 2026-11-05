@@ -1,0 +1,27 @@
+name = "flowtable-api"
+main = "src/index.ts"
+compatibility_date = "2026-11-01"
+workers_dev = true
+
+# 每天 06:00 UTC 跑全部启用的管道；整点任务留给 Pro 档（按 schedule 过滤）
+[triggers]
+crons = ["0 6 * * *", "0 * * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "flowtable"
+database_id = "REPLACE_WITH_D1_ID"
+migrations_dir = "../../infra/d1"
+
+[[r2_buckets]]
+binding = "SNAPSHOTS"
+bucket_name = "flowtable-snapshots"
+
+[vars]
+APP_URL = "https://flowtable.pages.dev"
+ALERT_FROM = "alerts@flowtable.dev"
+
+# 密钥不要写在这里，用 `wrangler secret put CREEM_WEBHOOK_SECRET` 等命令写入：
+#   CREEM_API_KEY
+#   CREEM_WEBHOOK_SECRET
+#   RESEND_API_KEY

@@ -1,0 +1,59 @@
+<h2 id="s2"><span class="num">02</span>方法论：这些数字是怎么来的</h2>
+
+<p>这份报告由六条并行的研究线汇总而成，每条线负责一个方向或一个交叉议题。为了避免“看起来很有数据其实全是编的”，我对每条信息做了三级标注：</p>
+
+<div class="tw">
+<table class="compact">
+<thead><tr><th>等级</th><th>含义</th><th>本报告中的例子</th><th class="n">占比</th></tr></thead>
+<tbody>
+<tr><td><span class="b a">A · 已验证</span></td><td>我或研究线实际打开了页面/接口，读到原文</td><td>Langfuse 36,991 stars（GitHub API 实测）；Rows 官方关停公告；Chrome 支付关停时间线；npm 月下载量</td><td class="n">约 35%</td></tr>
+<tr><td><span class="b bb">B · 二手可信</span></td><td>来自有署名的报道/汇总，标注了转引链</td><td>Zapier ARR ~$3.1 亿（Sacra/Latka 估算）；Dynatrace 收购 Arize $9.15 亿；Numerous $55 万 ARR（GetLatka 估算）</td><td class="n">约 25%</td></tr>
+<tr><td><span class="b c">C · 推断/估算</span></td><td>基于 SERP 观察与常识区间的量级判断，用于相对比较</td><td>绝大部分关键词月搜索量；缺口排序；“$19 是舒适区”这类定价判断</td><td class="n">约 40%</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>样本规模</h3>
+
+<div class="kpis">
+  <div class="kpi"><div class="v">88</div><div class="l">竞品样本（去重后）</div><div class="s">覆盖 5 个方向</div></div>
+  <div class="kpi"><div class="v">52</div><div class="l">差评样本（报告引用 30 条）</div><div class="s">全部带可点开链接</div></div>
+  <div class="kpi"><div class="v">132</div><div class="l">SEO 关键词</div><div class="s">其中 30 个有实测值</div></div>
+  <div class="kpi"><div class="v">6</div><div class="l">并行研究线</div><div class="s">交叉验证关键结论</div></div>
+</div>
+
+<h3>三条限制，请你在用这份报告时记住</h3>
+
+<div class="box warn">
+<h5>限制一：评论平台抓不到，差评偏“工程师视角”</h5>
+<p>G2、Capterra、Trustpilot、Reddit 对本次环境全部返回 403 或人机验证。所以差评来自 HN、GitHub Issues、厂商社区、官方文档。<b>这会让报告低估“客服差、退款难、界面难用”这类消费级抱怨，高估“架构/可靠性”类抱怨。</b>如果你要做的是卖给非技术用户的工具，请自己花 2 小时人工翻 50 条 G2 评论补齐。</p>
+</div>
+
+<div class="box warn">
+<h5>限制二：没有 Ahrefs/Semrush 权限，搜索量是量级而非精确值</h5>
+<p>只有 CSV/Excel 一节的 30 个词拿到了第三方工具的实测值（标 † 的那些）。其余为区间估计。<b>请把搜索量当作“相对大小的指示器”，不要当作“绝对流量预测”。</b>真正的判断依据是 SERP 里有没有一个在卖东西的页面——这个是可以人工验证的。</p>
+</div>
+
+<div class="box warn">
+<h5>限制三：收入数据普遍不透明</h5>
+<p>私有 SaaS 不披露 ARR。本报告用四类替代信号：<b>融资/估值</b>（说明资本认可）、<b>定价页</b>（说明有人在付钱）、<b>用户数/调用量</b>（说明有人在用）、<b>收购/关停</b>（说明模式能否独立存活）。<b>“关停”和“被收购”在本报告里被当作和“融资”同等重要的证据</b>——因为它告诉你这个生意最终能不能独立站着。</p>
+</div>
+
+<h3>评分模型</h3>
+
+<p>五个方向用同一套 5 维加权模型打分（0–10），权重反映“一个人 + $100 + 要首批付费用户”这个特定约束：</p>
+
+<div class="tw">
+<table class="compact">
+<thead><tr><th>维度</th><th class="n">权重</th><th>问的问题</th><th>主要证据来源</th></tr></thead>
+<tbody>
+<tr><td><b>需求强度</b></td><td class="n">20%</td><td>有多少人在主动找解决方案？</td><td>关键词量级、npm 下载、GitHub stars、用户数</td></tr>
+<tr><td><b>供给缺口</b></td><td class="n">25%</td><td>现有产品哪里没做好？有没有人腾出位置？</td><td>差评聚类、收购/关停、定价断层、SERP 强度</td></tr>
+<tr><td><b>付费意愿</b></td><td class="n">20%</td><td>他们已经在为类似的东西付多少钱？</td><td>竞品定价页、价格带分布、ACV</td></tr>
+<tr><td><b>单人可交付</b></td><td class="n">20%</td><td>一个人 6 周能不能做出可信的 1.0？</td><td>技术复杂度、infra 成本、信任门槛</td></tr>
+<tr><td><b>$100 冷启动</b></td><td class="n">15%</td><td>不花钱能不能被目标客户看见？</td><td>渠道可得性、内容速度、是否需要销售</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>权重最高的不是“需求”，而是“供给缺口”（25%）——因为需求大的地方通常竞争也大，而<b>“有人被丢下”比“有人想要”更能让一个新产品在第一周成交</b>。</p>

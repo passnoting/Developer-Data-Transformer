@@ -1,0 +1,84 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Turn any API, JSON or CSV into a clean, validated table — refreshed every morning, with every change logged.",
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://flowtable.pages.dev");
+
+// Google Search Console 的 HTML 标记验证。
+// 只在这一行改：在 Search Console 里选「网址前缀 → HTML 标记」，把 content 的值换过来。
+// 注意：不能用「网域」属性 —— pages.dev 的 DNS 不归我们管，加不了 TXT 记录。
+const GOOGLE_VERIFICATION = "sdfbP85xnAEtC9AOJWBFUbN7e2YVWmgAba4CmYk2lkc";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical.href} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    {GOOGLE_VERIFICATION && (
+      <meta name="google-site-verification" content={GOOGLE_VERIFICATION} />
+    )}
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231f4fd8'/><path d='M9 12h14M9 17h9M9 22h11' stroke='white' stroke-width='2.5' stroke-linecap='round'/></svg>" />
+
+    <!--
+      Cloudflare Web Analytics：无 cookie、不跨站追踪，所以不需要 GDPR 弹窗。
+      is:inline 是关键——不加的话 Astro 会尝试打包这个外部脚本，结果变成 404。
+      token 是公开的（每个访客都能看到），不是 API Token，放在仓库里没问题。
+    -->
+    <script
+      is:inline
+      type="module"
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "d458257d2ccc43758a6e6a7bcceba0f2"}'
+    ></script>
+  </head>
+  <body>
+    <header class="site">
+      <div class="wrap">
+        <a class="brand" href="/">Flow<span>Table</span></a>
+        <nav>
+          <a href="/tools/">Free tools</a>
+          <a href="/#pricing">Pricing</a>
+          <a href="/#how">How it works</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site">
+      <div class="wrap">
+        <p>
+          FlowTable · Messy data in, a clean table out — on a schedule, with an audit trail.<br />
+          Files never leave your browser on the free tools. We store rules and metadata only.
+        </p>
+        <p style="margin-top:10px">
+          <a href="/tools/">Tools</a> ·
+          <a href="/privacy">Privacy</a> ·
+          <a href="/terms">Terms</a> ·
+          <a href="mailto:hello@example.com">Email</a>
+        </p>
+      </div>
+    </footer>
+
+    <slot name="scripts" />
+  </body>
+</html>
